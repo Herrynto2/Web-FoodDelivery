@@ -1,0 +1,100 @@
+/* NavBar */
+
+.position {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.navbars {
+    background-color: transparent;
+}
+
+.navbarbrand {
+    font-weight: bold;
+    font-size: 40px !important;
+    text-shadow: 2px 2px 2px rgb(34, 34, 34);
+}
+
+.brandtext {
+    color: #ffc107;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.text {
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgb(34, 34, 34);
+}
+
+.text:hover {
+    color: #ffc107;
+    text-shadow: 2px 2px 2px rgb(121, 120, 120);
+}
+
+.btn-warning {
+    color: white !important;
+    margin-top: -3px;
+    border-radius: 20px !important;
+    width: 100px !important;
+}
+
+.cart:hover {
+    filter: drop-shadow(2px 2px 2px white);
+}
+
+
+/* Jumbotron */
+
+.slide1 {
+    background-image: url("../img/jumbotron1.jpg");
+    height: 700px;
+    background-size: cover;
+}
+
+.slide2 {
+    background-image: url("../img/jumbotron2.jpg");
+    height: 500px;
+    background-size: cover;
+}
+
+.slide3 {
+    background-image: url("../img/jumbotron3.jpg");
+    height: 500px;
+    background-size: cover;
+}
+
+.shop {
+    margin: -20px auto 0px !important;
+}
+
+.text-jumbotron {
+    font-size: 40px !important;
+    color: rgb(236, 236, 236);
+    text-shadow: 2px 2px 2px rgb(56, 56, 56);
+    margin: 120px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    .text-jumbotron {
+        font-size: 50px !important;
+    }
+}
+
+
+/* FOOTER */
+
+.textfooter {
+    color: #6c6666 !important;
+}

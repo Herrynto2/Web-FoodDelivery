@@ -1,15 +1,17 @@
 import React from 'react';
 import Navbars from '../components/Navbar';
+import Jumbotrons from '../components/Jumbotron'
+import Footer from '../components/Footer'
 
 class Home extends React.Component {
 
     render() {
         return ( <
             div > { /* NAVBAR */ } <
-            Navbars tittleNavbar = "AXELCIOUS"
-            colorNavbar = "dark" / >
+            Navbars / > { /* JUMBOTRON */ } <
+            Jumbotrons / > { /* FOOTER */ } <
+            Footer / >
             <
-            h1 > haii < /h1> <
             /div>
         )
     }
