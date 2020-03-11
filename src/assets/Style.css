@@ -177,3 +177,33 @@
 .dec {
     text-decoration: none;
 }
+
+
+/* Navbarsub */
+
+.navbarsub {
+    box-shadow: 0 2px 3px rgb(231, 229, 229) !important;
+}
+
+.navbarbrandsub {
+    margin-top: -7px !important;
+    font-weight: bold;
+    font-size: 40px !important;
+}
+
+.textsubbrand {
+    color: #333333 !important;
+}
+
+.textsub {
+    color: #333333 !important;
+    font-weight: bold;
+}
+
+.textsub:hover {
+    color: #ffc107 !important;
+}
+
+.cartsub:hover {
+    filter: drop-shadow(2px 2px 2px #ffc107);
+}
