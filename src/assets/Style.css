@@ -13,9 +13,26 @@
 }
 
 .navbarbrand {
+    margin-top: -7px !important;
     font-weight: bold;
     font-size: 40px !important;
     text-shadow: 2px 2px 2px rgb(34, 34, 34);
+}
+
+.bgsearch {
+    margin-top: 5px;
+    margin-left: 20px;
+    background-color: transparent !important;
+    color: white !important;
+    width: 200px !important;
+}
+
+.btnsearch:hover {
+    filter: drop-shadow(1px 1px 2px white);
+}
+
+.textcolor {
+    color: white !important;
 }
 
 .brandtext {
@@ -46,6 +63,10 @@
 
 .cart:hover {
     filter: drop-shadow(2px 2px 2px white);
+}
+
+.btnlogin {
+    filter: drop-shadow(1px 1px 2px black)
 }
 
 
@@ -99,7 +120,7 @@
     background-image: url('../img//joinus.jpg') !important;
     background-size: cover;
     margin-top: -40px;
-    height: 400px;
+    height: 600px;
     text-align: center;
 }
 

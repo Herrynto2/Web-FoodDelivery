@@ -3,6 +3,7 @@ import Navbars from '../components/Navbar';
 import Jumbotrons from '../components/Jumbotron'
 import Footer from '../components/Footer'
 import Joinus from '../components/Joinus';
+import Slider from '../components/SliderItems'
 
 class Home extends React.Component {
 
@@ -10,7 +11,8 @@ class Home extends React.Component {
         return ( <
             div > { /* NAVBAR */ } <
             Navbars / > { /* JUMBOTRON */ } <
-            Jumbotrons / > { /* JOIN US */ } <
+            Jumbotrons / > { /* SLIDER */ } <
+            Slider / > { /* JOIN US */ } <
             Joinus / > { /* FOOTER */ } <
             Footer / >
             <
