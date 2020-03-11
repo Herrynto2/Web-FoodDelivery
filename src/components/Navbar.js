@@ -25,7 +25,7 @@ class Navbars extends React.Component {
             <div>
                 <div className="position">
                 <Navbar light expand="md" className="p-3 navbars">
-                    <NavbarBrand className="ml-5 navbarbrand" href="/" ><span className="inline text">axel</span><span className="inline brandtext">cious</span></NavbarBrand>
+                        <NavbarBrand className="ml-5 navbarbrand" href=""><Link to="home"><span className="inline text">axel</span><span className="inline brandtext">cious</span></Link></NavbarBrand>
                         <form class="form-inline my-2 my-lg-0 textcolor">
                             <input class="bgsearch form-control mr-sm-2" type="search" placeholder="Search..." />
                             <Link><img src={search} alt="" width="30px" height="30px" className="btnsearch"/></Link>
@@ -43,14 +43,14 @@ class Navbars extends React.Component {
                                 </DropdownToggle>
                                 <DropdownMenu right >
                                     <DropdownItem>
-                                        Food
+                                        <Link to="/items"><span className="allitems">Food</span></Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        Drink
+                                        <Link to="/items"><span className="allitems">Drink</span></Link>
                                     </DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>
-                                        All Items
+                                        <Link to="/items" className="text-decoration-none"><span className="allitems">All Items</span></Link>
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>

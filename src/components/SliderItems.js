@@ -1,27 +1,42 @@
 import React from 'react';
+import { UncontrolledCarousel } from 'reactstrap';
+import Slider from '../img/slider1.png'
+import Slider2 from '../img/slider2.png'
+import Slider3 from '../img/slider3.png'
+
+
 
 class SliderItems extends React.Component {
+    items = [{
+            src: Slider,
+            altText: 'Slide 1',
+            caption: 'Slide 1',
+            header: 'Slide 1 Header',
+            key: '1'
+        },
+        {
+            src: Slider2,
+            altText: 'Slide 1',
+            caption: 'Slide 1',
+            header: 'Slide 1 Header',
+            key: '1'
+        },
+        {
+            src: Slider,
+            altText: 'Slide 1',
+            caption: 'Slide 1',
+            header: 'Slide 1 Header',
+            key: '1'
+        }
+    ];
     render() {
         return ( <
             div >
             <
-            div className = "bgjoinus" >
+            div className = "sliders" >
             <
-            div className = "container" >
-            <
-            div className = "row p-5" >
-            <
-            div className = "col-sm-6" > < /div> <
-            div className = "col-sm-6 justify-content-center" >
-            <
-            h1 className = "bold colorjoinus mt-2 mb-3" > Register your restaurant in our marketplace < /h1> <
-            span className = "contentjoinus" > Axelcious already has many partners and is very trusted Lorem ipsum dolor sit amet consectetur adipisicing elit.Natus, voluptatem. < /span> <
-            div className = "mt-3" > < button class = "btn btn-dark btnjoinus my-2 my-sm-0"
-            type = "submit" > Join Us < /button></div >
-            <
-            /div> <
-            /div> <
-            /div> <
+            UncontrolledCarousel items = { this.items }
+            /> <
             /div> <
             /div>
         )

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Main from '../src/pages/Main'
 import Signup from '../src/pages/Signup'
+import Items from '../src/pages/Items'
 
 function App() {
     return ( <
@@ -27,23 +28,31 @@ function App() {
                             />)}/ >
 
                             <
-                            Route path = "/home"
+                            Route path = "/signup"
                             render = {
                                 (props) =>
-                                ( < Home {...props }
+                                ( < Signup {...props }
                                     />)}/ >
 
                                     <
-                                    Route path = "/signup"
+                                    Route path = "/home"
                                     render = {
                                         (props) =>
-                                        ( < Signup {...props }
+                                        ( < Home {...props }
                                             />)}/ >
 
                                             <
-                                            /Switch> <
-                                            /BrowserRouter>
-                                        );
-                                    }
+                                            Route path = "/items"
+                                            render = {
+                                                (props) =>
+                                                ( < Items {...props }
+                                                    />)}/ >
 
-                                    export default App;
+
+                                                    <
+                                                    /Switch> <
+                                                    /BrowserRouter>
+                                                );
+                                            }
+
+                                            export default App;

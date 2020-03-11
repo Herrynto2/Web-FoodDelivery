@@ -19,6 +19,11 @@
     text-shadow: 2px 2px 2px rgb(34, 34, 34);
 }
 
+.allitems {
+    text-decoration: none !important;
+    color: black;
+}
+
 .bgsearch {
     margin-top: 5px;
     margin-left: 20px;
@@ -146,6 +151,13 @@
     .bgjoinus {
         text-align: left;
     }
+}
+
+
+/* Slider Items */
+
+.sliders {
+    height: 400px !important;
 }
 
 
