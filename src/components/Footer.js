@@ -15,7 +15,7 @@ class Footer extends React.Component {
             <
             div className = "row mt-5" >
             <
-            div className = "col-sm-3" >
+            div className = "col-sm-3 mb-5" >
             <
             h4 className = "bold" > Axelcious < /h4> <
             div className = "mt-3" > < Link to = "/login"
