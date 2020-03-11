@@ -1,4 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import Instagram from '../img/ig.png'
+import Youtube from '../img/youtube.png'
+import Facebook from '../img/fb.png'
+import Android from '../img/playstore.png'
+import Mac from '../img/playstore2.png'
 
 class Footer extends React.Component {
     render() {
@@ -12,30 +18,62 @@ class Footer extends React.Component {
             div className = "col-sm-3" >
             <
             h4 className = "bold" > Axelcious < /h4> <
-            div className = "mt-3" > < a href = ""
-            className = "textfooter" > Contact us < /a></div >
+            div className = "mt-3" > < Link to = "/login"
+            className = "textfooter" > Contact us < /Link></div >
             <
-            div className = "mt-2" > < a href = ""
-            className = "textfooter" > About us < /a></div >
+            div className = "mt-2" > < Link to = "/login"
+            className = "textfooter" > About us < /Link></div >
             <
-            div className = "mt-2" > < a href = ""
-            className = "textfooter" > Items < /a></div >
+            div className = "mt-2" > < Link to = "/login"
+            className = "textfooter" > See items < /Link></div >
             <
-            div className = "mt-2" > < a href = ""
-            className = "textfooter" > Restaurant < /a></div >
+            div className = "mt-2" > < Link to = "/login"
+            className = "textfooter" > See Restaurant < /Link></div >
             <
-            /div> <
-            div className = "col-sm-2" >
-            <
-            p > Lorem ipsum dolor sit amet consectetur adipisicing elit.Fugit laudantium maxime molestiae, iste magni aliquid accusamus itaque eveniet delectus esse. < /p> <
-            /div> <
-            div className = "col-sm-3" >
-            <
-            p > Lorem ipsum, dolor sit amet consectetur adipisicing elit.Dolorem error repellat eius molestias nulla enim temporibus est.Pariatur, placeat nostrum. < /p> <
             /div> <
             div className = "col-sm-4" >
             <
-            p > Lorem ipsum dolor sit, amet consectetur adipisicing elit.Alias animi aspernatur exercitationem vel explicabo!Modi debitis officia harum deserunt aspernatur. < /p> <
+            h4 className = "bold mb-3" > Call us < /h4> <
+            a href = ""
+            className = "dec" > < img src = { Facebook }
+            alt = ""
+            width = "40px"
+            height = "40px" / > < /a> <
+            a href = ""
+            className = "ml-3 dec" > < img src = { Instagram }
+            alt = ""
+            width = "30px"
+            height = "30px" / > < /a> <
+            a href = ""
+            className = "dec" > < img src = { Youtube }
+            alt = ""
+            width = "70px"
+            height = "70px" / > < /a> <
+            div >
+            <
+            a href = ""
+            className = "dec" > < img src = { Android }
+            alt = ""
+            width = "120px"
+            height = "50px" / > < /a> <
+            a href = ""
+            className = "ml-3 dec" > < img src = { Mac }
+            alt = ""
+            width = "120px"
+            height = "60px" / > < /a> <
+            /div> <
+            /div> <
+            div className = "col-sm-5" >
+            <
+            form class = "form-inline my-2 my-lg-0" >
+            <
+            input class = "form-control mr-sm-2"
+            type = "search"
+            placeholder = "Get your food now ..." / >
+            <
+            button class = "btn btn-warning my-2 my-sm-0"
+            type = "submit" > Get it < /button> <
+            /form> <
             /div> <
             /div> <
             /div> <
