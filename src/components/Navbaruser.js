@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import '../assets/Style.css'
-import cart from '../img/cartsub.png'
-import search from '../img/searchsub.png'
+import cart from '../img/cart.png'
+import search from '../img/search.png'
+import profile from '../img/profile.png'
 
 import {
     Collapse,
@@ -18,23 +19,34 @@ import {
     DropdownItem
 } from 'reactstrap';
 
-class Navbarsub extends React.Component {
+
+class Navbaruser extends React.Component {
+
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         collapsed: true
+    //     }
+    // }
+
+    // toggleNavbar = () => setCollapsed(!collapsed);
+
     render() {
 
         return ( <
             div >
             <
-            div className = "navbarsub" >
+            div className = "position" >
             <
             Navbar light expand = "md"
-            className = "p-3 " >
+            className = "p-3 navbars" >
             <
-            NavbarBrand className = "ml-5 navbarbrandsub"
-            href = "" > < Link to = "home" > < span className = "inline textsubbrand" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand >
+            NavbarBrand className = "ml-5 navbarbrand"
+            href = "" > < Link to = "home" > < span className = "inline text" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand >
             <
-            form className = "form-inline my-2 my-lg-0 textcolor ml-3" >
+            form class = "form-inline my-2 my-lg-0 textcolor" >
             <
-            input class = " form-control mr-sm-2"
+            input class = "bgsearch form-control mr-sm-2"
             type = "search"
             placeholder = "Search..." / >
             <
@@ -42,11 +54,14 @@ class Navbarsub extends React.Component {
             alt = ""
             width = "30px"
             height = "30px"
-            className = "cartsub" / > < /Link> <
-            /form> <
+            className = "btnsearch" / > < /Link> <
+            /form>
+
+            <
             NavbarToggler className = "mr-2" / >
             <
             Collapse navbar className = "collapse navbar-collapse" >
+
             <
             Nav className = "ml-auto mr-5"
             navbar >
@@ -54,8 +69,8 @@ class Navbarsub extends React.Component {
             NavItem >
             <
             NavLink > < Link to = "/home"
-            className = "mr-5 text-decoration-none"
-            href = "/components/" > < span className = "textsub" > Home < /span></Link >
+            className = "mr-5 margin text-decoration-none"
+            href = "/components/" > < span className = "text" > Home < /span></Link >
             <
             /NavLink> <
             /NavItem> <
@@ -63,7 +78,7 @@ class Navbarsub extends React.Component {
             <
             DropdownToggle nav caret className = "mr-3" >
             <
-            span className = "textsub" > Menu < /span> <
+            span className = "text" > Menu < /span> <
             /DropdownToggle> <
             DropdownMenu right >
             <
@@ -91,13 +106,22 @@ class Navbarsub extends React.Component {
             <
             NavLink > < Link to = "/restaurant"
             className = "ml-3 text-decoration-none"
-            href = "/components/" > < span className = "textsub" > Restaurant < /span></Link > < /NavLink> <
+            href = "/components/" > < span className = "text" > Restaurant < /span></Link > < /NavLink> <
             /NavItem> <
             NavItem >
             <
             NavLink > < Link to = "/home"
-            className = "ml-4 mr-3 margin text-decoration-none cartsub"
+            className = "ml-4 mr-3 margin text-decoration-none cart"
             href = "/components/" > < img src = { cart }
+            width = "30px"
+            alt = "" / > < /Link> <
+            /NavLink> <
+            /NavItem> <
+            NavItem >
+            <
+            NavLink > < Link to = "/home"
+            className = "ml-4 mr-3 margin text-decoration-none cart"
+            href = "/components/" > < img src = { profile }
             width = "30px"
             alt = "" / > < /Link> <
             /NavLink> <
@@ -107,9 +131,9 @@ class Navbarsub extends React.Component {
             NavLink >
             <
             Link to = "/login"
-            className = "ml-3 btnloginsub"
+            className = "ml-3 btnlogin"
             href = "/components/" > < button type = "button"
-            className = "btnsub btn btn-warning" > Login < /button></Link >
+            className = "btn btn-warning" > Logout < /button></Link >
             <
             /NavLink> <
             /NavItem> <
@@ -122,4 +146,4 @@ class Navbarsub extends React.Component {
     }
 }
 
-export default Navbarsub;
+export default Navbaruser;

@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/Login.css'
 import { Link } from 'react-router-dom'
 
-class Login extends React.Component {
+class ForgotPassword extends React.Component {
     render() {
         return ( <
             div >
@@ -17,47 +17,47 @@ class Login extends React.Component {
             <
             div className = "row" >
             <
-            div className = "col-lg formlogin pl-5 pr-5 pt-5" >
-            <
-            div className = "titlelogin" > < label > Login < /label></div >
+            div className = "col-lg formforgot pl-5 pr-5 pt-5" >
             <
             div class = "form-group" >
             <
             label
             for = "exampleFormControlInput1"
             className = "text-dark gray" > Username < /label> <
-            input type = "text"
+            input type = "username"
             className = "form-control"
             id = "exampleFormControlInput1"
             placeholder = "username ..." / >
             <
             label
             for = "exampleFormControlInput1"
-            className = "mt-3" > password < /label> <
+            className = "mt-3" > New password < /label> <
+            input type = "password"
+            className = "form-control"
+            id = "exampleFormControlInput1"
+            placeholder = "password ..." / >
+            <
+            label
+            for = "exampleFormControlInput1"
+            className = "mt-3" > Confirm password < /label> <
             input type = "password"
             className = "form-control"
             id = "exampleFormControlInput1"
             placeholder = "password ..." / >
             <
             /div> <
-            div className = "text-right" >
-            <
-            Link to = "/forgot-password"
-            className = "text-decoration-none" > < span className = "forgotlink" > forgot the password < /span></Link >
-            <
-            /div> <
             div className = "text-center" >
             <
-            Link to = "/homes"
+            Link to = "/home"
             className = "ml-3"
             href = "/components/" > < button type = "button"
-            className = "btn btn-primary mt-4" > Login < /button></Link >
+            className = "btn btn-primary mt-2" > Send < /button></Link >
             <
             /div> <
             div className = "text-center mt-4" >
             <
-            Link to = "/signup"
-            className = "text-decoration-none" > < span className = "signuplink" > Create new account < /span></Link >
+            Link to = "/login"
+            className = "text-decoration-none" > < span className = "signuplink" > Back to login < /span></Link >
             <
             /div> <
             /div> <
@@ -71,4 +71,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default ForgotPassword;

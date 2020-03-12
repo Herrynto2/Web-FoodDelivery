@@ -207,3 +207,78 @@
 .cartsub:hover {
     filter: drop-shadow(2px 2px 2px #ffc107);
 }
+
+
+/* ListItems Page */
+
+.card-text {
+    margin-bottom: 0px !important;
+    color: black !important;
+}
+
+.textcolor {
+    color: #ffc107 !important;
+    font-weight: 700;
+    margin-top: 10px !important;
+}
+
+.card-resto {
+    font-weight: 700;
+    color: black !important;
+}
+
+.cardresto:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.imgcart {
+    width: 40px;
+    height: 30px;
+    margin-left: -20px;
+    border-radius: 0 !important;
+    margin-bottom: 20px !important;
+    filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
+}
+
+.imgcart:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.carditems :hover {
+    transform: scale(1.2, 1.2);
+}
+
+@media (min-width: 992px) {
+    .imgitems {
+        width: 50px;
+        height: 200px;
+    }
+}
+
+
+/* Create Restaurant Page */
+
+.bgcreateresto {
+    background-image: url('../img//bgjoinus.jpg');
+    background-size: cover;
+    height: 654px !important;
+}
+
+.lbljoinus {
+    font-size: 13px !important;
+}
+
+.formjoinus {
+    margin-top: 50px;
+    height: 580px;
+    box-shadow: 2px 2px 3px rgb(88, 88, 88);
+    background-color: #ffffff;
+    border-radius: 40px;
+}
+
+.titlecreateresto {
+    font-weight: 700 !important;
+    text-align: center !important;
+    font-size: 18px;
+    margin-bottom: 5px;
+}

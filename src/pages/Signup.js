@@ -38,11 +38,11 @@ class Signup extends React.Component {
             option > Man < /option> <
             option > Woman < /option> <
             /select> <
-            input type = "email"
+            input type = "text"
             className = "form-control mt-3"
             placeholder = "address ..." / >
             <
-            input type = "email"
+            input type = "text"
             className = "form-control mt-3"
             placeholder = "work ..." / >
             <
