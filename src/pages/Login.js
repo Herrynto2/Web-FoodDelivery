@@ -13,7 +13,7 @@ class Login extends React.Component {
             <
             div className = "row justify-content-center" >
             <
-            div className = "col-4 info-panel" >
+            div className = "col-lg-4 info-panel" >
             <
             div className = "row" >
             <

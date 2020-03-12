@@ -32,18 +32,6 @@ class Navbarsub extends React.Component {
             NavbarBrand className = "ml-5 navbarbrandsub"
             href = "" > < Link to = "home" > < span className = "inline textsubbrand" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand >
             <
-            form className = "form-inline my-2 my-lg-0 textcolor ml-3" >
-            <
-            input class = " form-control mr-sm-2"
-            type = "search"
-            placeholder = "Search..." / >
-            <
-            Link > < img src = { search }
-            alt = ""
-            width = "30px"
-            height = "30px"
-            className = "cartsub" / > < /Link> <
-            /form> <
             NavbarToggler className = "mr-2" / >
             <
             Collapse navbar className = "collapse navbar-collapse" >

@@ -42,20 +42,12 @@ class Navbaruser extends React.Component {
             className = "p-3 navbars" >
             <
             NavbarBrand className = "ml-5 navbarbrand"
-            href = "" > < Link to = "home" > < span className = "inline text" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand >
-            <
-            form class = "form-inline my-2 my-lg-0 textcolor" >
-            <
-            input class = "bgsearch form-control mr-sm-2"
-            type = "search"
-            placeholder = "Search..." / >
-            <
-            Link > < img src = { search }
-            alt = ""
-            width = "30px"
-            height = "30px"
-            className = "btnsearch" / > < /Link> <
-            /form>
+            href = "" > < Link to = "home" > < span className = "inline text" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand > {
+                /* <form class="form-inline my-2 my-lg-0 textcolor">
+                                            <input class="bgsearch form-control mr-sm-2" type="search" placeholder="Search..." />
+                                            <Link><img src={search} alt="" width="30px" height="30px" className="btnsearch" /></Link>
+                                        </form> */
+            }
 
             <
             NavbarToggler className = "mr-2" / >

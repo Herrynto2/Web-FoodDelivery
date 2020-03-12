@@ -67,9 +67,9 @@ class Footer extends React.Component {
             <
             form class = "form-inline my-2 my-lg-0" >
             <
-            input class = "form-control mr-sm-2"
+            input className = "form-control searchfooter mr-sm-2"
             type = "search"
-            placeholder = "Get your food now ..." / >
+            placeholder = "Get your items now ..." / >
             <
             button class = "btn btn-warning my-2 my-sm-0"
             type = "submit" > Get it < /button> <

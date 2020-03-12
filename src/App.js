@@ -15,6 +15,7 @@ import CreateRestaurant from '../src/pages/Createresto'
 import Profile from '../src/pages/Profile'
 import Profileuser from '../src/pages/ProfileUser'
 import Profileresto from '../src/pages/ProfileResto'
+import Carts from '../src/pages/cart'
 
 function App() {
     return ( <
@@ -85,25 +86,25 @@ function App() {
                                                                                     />)}/ >
 
                                                                                     <
-                                                                                    Route path = "/profile"
+                                                                                    Route path = "/userprofile"
                                                                                     render = {
                                                                                         (props) =>
-                                                                                        ( < Profile {...props }
+                                                                                        ( < Profileuser {...props }
                                                                                             />)}/ >
 
                                                                                             <
-                                                                                            Route path = "/userprofile"
+                                                                                            Route path = "/restaurantprofile"
                                                                                             render = {
                                                                                                 (props) =>
-                                                                                                ( < Profileuser {...props }
+                                                                                                ( < Profileresto {...props }
                                                                                                     />)}/ >
 
                                                                                                     <
-                                                                                                    Route path = "/restaurantprofile"
+                                                                                                    Route path = "/cart"
                                                                                                     render = {
                                                                                                         (props) =>
-                                                                                                        ( < Profile {...props }
-                                                                                                             />)} />
+                                                                                                        ( < Carts {...props }
+                                                                                                            />)}/ >
 
                                                                                                             <
                                                                                                             Route path = "/homes"

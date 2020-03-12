@@ -1,45 +1,97 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Gua from '../img/gua.jpg'
+import Navbarsubuser from '../components/Navbarsubuser'
 
 class Profileuser extends React.Component {
     render() {
         return ( <
             div >
             <
-            div className = "container" >
-            <
-            Link className = "card-body-link" >
-            <
-            div className = "card mb-3 card-profile card-body-hover" >
-            <
-            div className = "row no-gutters" >
-            <
-            div className = "row no-gutters" >
-            <
-            img src = { Gua }
-            className = "card-img card-img-profile" / >
-            <
-            /div> <
-            div className = "col-md-6" >
-            <
-            div className = "card-body" >
-            <
-            h5 className = "card-title" > Heri Heryanto < /h5> <
-            hr / >
-            <
-            p className = "card-text" > < small className = "text-muted" > Last updated 3 mins ago < /small></p >
-            <
-            p className = "card-text text-muted mt-5" > Web Developer < /p> <
-            h5 className = "card-text text-muted" > Depok < /h5>
+            Navbarsubuser / >
 
             <
+            div className = "container" >
+            <
+            div className = "row mt-5" >
+            <
+            div className = "col-sm-12" >
+            <
+            h3 className = "tittleuserprofile" > User Profile < /h3><hr/ >
+            <
+            /div> <
+            /div> <
+            div className = "row mt-3" >
+            <
+            div className = "col-lg-4 sizeprofile" >
+            <
+            img src = { Gua }
+            className = "sizeuserprofile mb-3" / >
+            <
+            input type = "file"
+            className = "form-control-file"
+            id = "exampleFormControlInput1" / >
+            <
+            textarea className = "form-control address"
+            rows = "3 " > < /textarea> <
+            /div> <
+            div className = "col-lg-1" > < /div> <
+            div className = "col-lg-6" >
+            <
+            small className = "balance" > Balance < /small><br/ >
+            <
+            button class = "btn btn-warning btntopup"
+            type = "submit" > Topup < /button> <
+            span className = "value" > 200000 < /span>
+
+            <
+            hr / >
+            <
+            div class = "form-group" >
+            <
+            label
+            for = "exampleFormControlInput1"
+            className = " sml" > Name < /label> <
+            input type = "text"
+            className = "form-control"
+            id = "exampleFormControlInput1"
+            placeholder = "name ..." / >
+            <
+            label
+            for = "exampleFormControlInput1"
+            className = "mt-2 sml" > Email < /label> <
+            input type = "email"
+            className = "form-control"
+            id = "exampleFormControlInput1"
+            placeholder = "email ..." / >
+            <
+            label
+            for = "exampleFormControlInput1"
+            className = "mt-2 sml" > Gender < /label> <
+            select class = "form-control"
+            id = "exampleFormControlSelect1"
+            placeholder = "Gender" >
+            <
+            option > Man < /option> <
+            option > Woman < /option> <
+            /select>   <
+            label
+            for = "exampleFormControlInput1"
+            className = "mt-2 sml" > Work < /label> <
+            input type = "text"
+            className = "form-control mb-4"
+            id = "exampleFormControlInput1"
+            placeholder = "work ..." / >
+            <
+            button class = "btn btn-warning my-2 my-sm-0"
+            type = "submit" > Edit < /button> <
             /div> <
             /div> <
             /div> <
-            /div> <
-            /Link> <
-            /div> <
+            /div>
+
+
+            <
             /div>
         )
     }

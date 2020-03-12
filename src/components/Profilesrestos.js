@@ -9,7 +9,8 @@ class Profilerestos extends React.Component {
             <
             div className = "container" >
             <
-            Link className = "card-body-link" >
+            Link to = "/restaurantprofile"
+            className = "card-body-link" >
             <
             div className = "card mb-3 card-profile card-body-hover" >
             <

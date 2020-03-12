@@ -9,7 +9,7 @@ class Signup extends React.Component {
             <
             div className = "row" >
             <
-            div className = "col-sm-8 col-sm-3 bgsignup" > < /div> <
+            div className = "col-sm-8 bgsignup" > < /div> <
             div className = "col-sm-4 p-5" >
             <
             div className = "text-center bold mb-5 text-signup" > Sign Up < /div> <

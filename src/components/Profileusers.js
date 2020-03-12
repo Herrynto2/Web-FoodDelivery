@@ -9,7 +9,8 @@ class Profileusers extends React.Component {
             <
             div className = "container" >
             <
-            Link className = "card-body-link" >
+            Link to = "/userprofile"
+            className = "card-body-link" >
             <
             div className = "card mb-3 card-profile card-body-hover" >
             <
@@ -17,9 +18,8 @@ class Profileusers extends React.Component {
             <
             div className = "row no-gutters" >
             <
-            img src = { Gua }
-            className = "card-img card-img-profile" / >
-            <
+            div className = "img-profilesize" > < img src = { Gua }
+            className = "card-img card-img-profile" / > < /div> <
             /div> <
             div className = "col-md-6" >
             <
