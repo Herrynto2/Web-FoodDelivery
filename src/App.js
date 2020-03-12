@@ -12,6 +12,9 @@ import ForgotPassword from '../src/pages/ForgotPassword'
 import Items from '../src/pages/Items'
 import Restaurant from '../src/pages/Restaurant'
 import CreateRestaurant from '../src/pages/Createresto'
+import Profile from '../src/pages/Profile'
+import Profileuser from '../src/pages/ProfileUser'
+import Profileresto from '../src/pages/ProfileResto'
 
 function App() {
     return ( <
@@ -75,17 +78,45 @@ function App() {
                                                                             />)}/ >
 
                                                                             <
-                                                                            Route path = "/homes"
+                                                                            Route path = "/profile"
                                                                             render = {
                                                                                 (props) =>
-                                                                                ( < Homeuser {...props }
+                                                                                ( < Profile {...props }
                                                                                     />)}/ >
 
-
                                                                                     <
-                                                                                    /Switch> <
-                                                                                    /BrowserRouter>
-                                                                                );
-                                                                            }
+                                                                                    Route path = "/profile"
+                                                                                    render = {
+                                                                                        (props) =>
+                                                                                        ( < Profile {...props }
+                                                                                            />)}/ >
 
-                                                                            export default App;
+                                                                                            <
+                                                                                            Route path = "/userprofile"
+                                                                                            render = {
+                                                                                                (props) =>
+                                                                                                ( < Profileuser {...props }
+                                                                                                    />)}/ >
+
+                                                                                                    <
+                                                                                                    Route path = "/restaurantprofile"
+                                                                                                    render = {
+                                                                                                        (props) =>
+                                                                                                        ( < Profile {...props }
+                                                                                                             />)} />
+
+                                                                                                            <
+                                                                                                            Route path = "/homes"
+                                                                                                            render = {
+                                                                                                                (props) =>
+                                                                                                                ( < Homeuser {...props }
+                                                                                                                    />)}/ >
+
+
+                                                                                                                    <
+                                                                                                                    /Switch> <
+                                                                                                                    /BrowserRouter>
+                                                                                                                );
+                                                                                                            }
+
+                                                                                                            export default App;

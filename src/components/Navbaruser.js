@@ -119,7 +119,7 @@ class Navbaruser extends React.Component {
             /NavItem> <
             NavItem >
             <
-            NavLink > < Link to = "/home"
+            NavLink > < Link to = "/profile"
             className = "ml-4 mr-3 margin text-decoration-none cart"
             href = "/components/" > < img src = { profile }
             width = "30px"

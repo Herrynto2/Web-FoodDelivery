@@ -282,3 +282,29 @@
     font-size: 18px;
     margin-bottom: 5px;
 }
+
+
+/* Page Profile */
+
+.card-img-profile {
+    width: 340px !important;
+    height: 280px;
+}
+
+.card-profile {
+    margin-top: 50px;
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(75, 75, 75);
+}
+
+.card-body-hover:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.card-body-link {
+    text-decoration: none !important;
+}
