@@ -1,10 +1,11 @@
 import React from 'react';
+import axios from 'axios'
 import Bakso from '../img/bakso.png'
-import Resto from '../img/resto1.jpg'
 import { Link } from 'react-router-dom'
 import cart from '../img/cart.png'
 
 class ListItems extends React.Component {
+
     render() {
         return ( <
             div >
@@ -32,9 +33,8 @@ class ListItems extends React.Component {
             Link > < img src = { cart }
             alt = ""
             className = "imgcart" / > < /Link> <
-            h5 className = "card-text" > Bakso Kuah < /h5> <
-            h7 className = "card-resto" > Solaria < /h7> <
-            h6 className = "textcolor" > 20000 < /h6> <
+            h5 className = "card-text" > { this.props.items } < /h5> <
+            h7 className = "card-resto" > { this.props.restaurant } < /h7> { /* <h6 className="textcolor">{this.props.prices}</h6> */ } <
             /div> <
             /div> <
             /Link>

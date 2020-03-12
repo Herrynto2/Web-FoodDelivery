@@ -88,7 +88,7 @@ class Navbaruser extends React.Component {
             <
             DropdownItem >
             <
-            Link to = "/items"
+            Link to = "/browse-items"
             className = "text-decoration-none" > < span className = "allitems" > All Items < /span></Link >
             <
             /DropdownItem> <
@@ -96,13 +96,13 @@ class Navbaruser extends React.Component {
             /UncontrolledDropdown> <
             NavItem >
             <
-            NavLink > < Link to = "/restaurant"
+            NavLink > < Link to = "/browse-restaurant"
             className = "ml-3 text-decoration-none"
             href = "/components/" > < span className = "text" > Restaurant < /span></Link > < /NavLink> <
             /NavItem> <
             NavItem >
             <
-            NavLink > < Link to = "/home"
+            NavLink > < Link to = "/cart"
             className = "ml-4 mr-3 margin text-decoration-none cart"
             href = "/components/" > < img src = { cart }
             width = "30px"

@@ -4,7 +4,7 @@ import Bakso from '../img/bakso.png'
 import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
 
-class Carts extends React.Component {
+class Checkout extends React.Component {
     render() {
         return ( <
             div >
@@ -13,9 +13,8 @@ class Carts extends React.Component {
             <
             div className = 'container' >
             <
-            h4 className = " bold mt-5 text-center" > Cart List < /h4> <
-            Link to = "/checkout"
-            className = "card-body-link" >
+            h4 className = " bold mt-5 text-center" > Cart List < /h4>
+
             <
             div className = "card mb-3 card-profile img-cartsize card-body-hover" >
             <
@@ -39,24 +38,23 @@ class Carts extends React.Component {
             /div> <
             /div> <
             /div> <
-            /Link> <
             div class = "card" >
             <
             div class = "card-body" >
             <
-            div className = "text-checkout bold" > Checkout: < span className = "cart-balance" > Rp.288800 < /span></div >
+            div className = "text-checkout bold" > Checkout:
+            <
+            button className = "ml-3 btn btn-danger" > Rp.100000 < /button></div >
             <
             /div> <
             /div> <
             /div>
 
 
-            <
-            Footer / >
             <
             /div>
         )
     }
 }
 
-export default Carts;
+export default Checkout;

@@ -16,6 +16,7 @@ import Profile from '../src/pages/Profile'
 import Profileuser from '../src/pages/ProfileUser'
 import Profileresto from '../src/pages/ProfileResto'
 import Carts from '../src/pages/cart'
+import Checkout from '../src/pages/Checkout'
 
 function App() {
     return ( <
@@ -30,42 +31,42 @@ function App() {
                     />)}/ >
 
                     <
-                    Route path = "/Login"
+                    Route path = "/home"
                     render = {
                         (props) =>
-                        ( < Login {...props }
+                        ( < Home {...props }
                             />)}/ >
 
                             <
-                            Route path = "/signup"
+                            Route path = "/Login"
                             render = {
                                 (props) =>
-                                ( < Signup {...props }
+                                ( < Login {...props }
                                     />)}/ >
 
                                     <
-                                    Route path = "/forgot-password"
+                                    Route path = "/signup"
                                     render = {
                                         (props) =>
-                                        ( < ForgotPassword {...props }
+                                        ( < Signup {...props }
                                             />)}/ >
 
                                             <
-                                            Route path = "/home"
+                                            Route path = "/forgot-password"
                                             render = {
                                                 (props) =>
-                                                ( < Home {...props }
+                                                ( < ForgotPassword {...props }
                                                     />)}/ >
 
                                                     <
-                                                    Route path = "/items"
+                                                    Route path = "/browse-items"
                                                     render = {
                                                         (props) =>
                                                         ( < Items {...props }
                                                             />)}/ >
 
                                                             <
-                                                            Route path = "/restaurant"
+                                                            Route path = "/browse-restaurant"
                                                             render = {
                                                                 (props) =>
                                                                 ( < Restaurant {...props }
@@ -107,17 +108,23 @@ function App() {
                                                                                                             />)}/ >
 
                                                                                                             <
-                                                                                                            Route path = "/homes"
+                                                                                                            Route path = "/checkout"
                                                                                                             render = {
                                                                                                                 (props) =>
-                                                                                                                ( < Homeuser {...props }
+                                                                                                                ( < Checkout {...props }
                                                                                                                     />)}/ >
 
-
                                                                                                                     <
-                                                                                                                    /Switch> <
-                                                                                                                    /BrowserRouter>
-                                                                                                                );
-                                                                                                            }
+                                                                                                                    Route path = "/homes"
+                                                                                                                    render = {
+                                                                                                                        (props) =>
+                                                                                                                        ( < Homeuser {...props }
+                                                                                                                            />)}/ >
 
-                                                                                                            export default App;
+                                                                                                                            <
+                                                                                                                            /Switch> <
+                                                                                                                            /BrowserRouter>
+                                                                                                                        );
+                                                                                                                    }
+
+                                                                                                                    export default App;
