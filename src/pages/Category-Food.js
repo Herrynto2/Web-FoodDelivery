@@ -1,13 +1,13 @@
 import React from 'react'
 import '../assets/Style.css'
 import Navbarsub from '../components/Navbarsub'
-import ListItems from '../components/Listitems'
+import ListItem from '../components/Listitems'
 import Footer from '../components/Footer'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
-class Items extends React.Component {
+class CategoryFood extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
@@ -20,7 +20,7 @@ class Items extends React.Component {
         }
 
         async getDataItems() {
-            await axios.get("http://localhost:3000/browse-items")
+            await axios.get("http://localhost:3000/browse-category/1")
                 .then(res => {
                     console.log(res)
                     let dataArr = res.data.data
@@ -45,12 +45,12 @@ class Items extends React.Component {
                         <
                         div className = "row" >
                         <
-                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > List Items < /h4></div >
+                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > Food Category < /h4></div >
                         <
                         /div> <
                         div className = "row " > {
                             this.state.data_items.map((val, idx) => ( <
-                                    ListItems key = { idx }
+                                    ListItem key = { idx }
                                     items = { val.name_item }
                                     restaurant = { val.name_restaurant }
                                     prices = { val.price }
@@ -104,4 +104,4 @@ class Items extends React.Component {
                             }
                         }
 
-                        export default Items;
+                        export default CategoryFood;

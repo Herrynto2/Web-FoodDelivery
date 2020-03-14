@@ -55,9 +55,8 @@ class Login extends React.Component {
                                 //console.log(this.props)
                             this.props.history.push('/home') //push home page
                         } catch (error) {
-                            //console.log(error.response)
+                            console.log(error.response)
                             alert(error.response.msg)
-
                         }
                     }
                 })
@@ -68,8 +67,6 @@ class Login extends React.Component {
                 })
         }
     }
-
-
 
     render() {
         return ( <

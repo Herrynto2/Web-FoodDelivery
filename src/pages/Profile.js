@@ -5,8 +5,10 @@ import Profileusers from '../components/Profileusers'
 import Profilerestos from '../components/Profilesrestos'
 
 class Profile extends React.Component {
+
     render() {
-        return <div >
+        return ( <
+            div >
             <
             Navbarsubuser / >
             <
@@ -15,6 +17,7 @@ class Profile extends React.Component {
             Profilerestos / >
             <
             /div>
+        )
     }
 }
 

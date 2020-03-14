@@ -16,7 +16,9 @@ class Profilerestaurant extends React.Component {
             <
             div className = "col-sm-12" >
             <
-            h3 className = "tittleuserprofile" > Restaurant Profile < /h3><hr / >
+            h3 className = "tittleuserprofile" > Restaurant Profile <
+            /h3><hr / >
+
             <
             /div> <
             /div> <
@@ -24,8 +26,11 @@ class Profilerestaurant extends React.Component {
             <
             div className = "col-lg-4 sizeprofile" >
             <
+            Link to = "/items" > < button class = " btnitems btn btn-warning my-2 my-sm-0"
+            type = "submit" > Items < /button></Link >
+            <
             img src = { Gua }
-            className = "sizeuserprofile mb-3" / >
+            className = "sizeuserprofile mb-3 mt-4" / >
             <
             input type = "file"
             className = "form-control-file"
@@ -79,6 +84,7 @@ class Profilerestaurant extends React.Component {
             <
             button class = "btn btn-warning my-2 my-sm-0"
             type = "submit" > Edit < /button>
+
 
             <
             /div> <

@@ -1,13 +1,12 @@
 import React from 'react'
 import '../assets/Style.css'
 import Navbarsub from '../components/Navbarsub'
-import ListItems from '../components/Listitems'
+import ListItemResto from '../components/Listitemsresto'
 import Footer from '../components/Footer'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
-class Items extends React.Component {
+class Itemsresto extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
@@ -50,11 +49,11 @@ class Items extends React.Component {
                         /div> <
                         div className = "row " > {
                             this.state.data_items.map((val, idx) => ( <
-                                    ListItems key = { idx }
+                                    ListItemResto key = { idx }
                                     items = { val.name_item }
                                     restaurant = { val.name_restaurant }
                                     prices = { val.price }
-                                    id = { val.id_item }
+                                    category = { val.category }
                                     />))} <
                                     /div> <
                                     /div> <
@@ -104,4 +103,4 @@ class Items extends React.Component {
                             }
                         }
 
-                        export default Items;
+                        export default Itemsresto;

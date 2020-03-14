@@ -67,3 +67,32 @@
     background-color: #ffffff;
     border-radius: 40px;
 }
+
+
+/* VERIFY */
+
+.formverify {
+    margin-top: 120px;
+    height: 260px;
+    box-shadow: 2px 2px 3px rgb(88, 88, 88);
+    background-color: #ffffff;
+    border-radius: 40px;
+}
+
+.inputverify {
+    height: 70px !important;
+    font-size: 25px !important;
+    border-radius: 5px !important;
+}
+
+.titleverify {
+    font-weight: 500;
+    font-size: 20px;
+    color: gray;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.btnverify {
+    text-align: right !important;
+}

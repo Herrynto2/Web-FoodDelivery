@@ -1,8 +1,10 @@
 import React from 'react';
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Gua from '../img/gua.jpg'
 
 class Profileusers extends React.Component {
+
     render() {
         return ( <
             div >
@@ -25,7 +27,7 @@ class Profileusers extends React.Component {
             <
             div className = "card-body" >
             <
-            h5 className = "card-title" > Heri Heryanto < /h5> <
+            h5 className = "card-title" > { this.props.name } < /h5> <
             hr / >
             <
             p className = "card-text" > < small className = "text-muted" > Last updated 3 mins ago < /small></p >

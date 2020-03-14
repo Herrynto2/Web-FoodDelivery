@@ -294,6 +294,34 @@
 }
 
 
+/* Restaurant Items */
+
+.carditemresto {
+    width: 150px !important;
+    height: 200px;
+}
+
+.imgitemresto {
+    width: 150px !important;
+}
+
+.card-text-resto {
+    font-size: 15px !important;
+    color: black !important;
+    margin-bottom: -2px;
+}
+
+.card-resto-category {
+    font-size: 13px !important;
+    color: black !important;
+    font-weight: 700;
+}
+
+.text-price {
+    margin-top: -1px !important;
+}
+
+
 /* Page Profile */
 
 .form-control-file {
@@ -325,6 +353,10 @@
 
 .img-profilesize {
     text-align: center !important;
+}
+
+.btnitems {
+    border-radius: 10% !important;
 }
 
 @media (min-width: 992px) {
@@ -431,8 +463,8 @@
     color: #ffffff;
     padding: 5px;
     padding-left: 10px !important;
-    background-color: #db0007;
-    width: 400px;
+    background-color: #dc3545;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -449,4 +481,47 @@
 
 .cart-balance {
     color: #ffc107;
+}
+
+.checkout-profile {
+    width: 300px;
+}
+
+.check-price {
+    color: #ffc107 !important;
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.checkout-position {
+    text-align: center;
+}
+
+
+/* Pagination */
+
+
+/* Reviews */
+
+.reviews-box {
+    padding: 15px 10px 15px 20px;
+    width: 100%;
+    box-shadow: 2px 2px 2px rgb(228, 227, 227), -2px -2px 2px rgb(228, 227, 227);
+}
+
+.img-reviews {
+    border-radius: 100% !important;
+    width: 80px !important;
+    height: 80px !important;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.marginreview {
+    margin-bottom: 20px !important;
+}
+
+.plus {
+    font-weight: bolder !important;
 }

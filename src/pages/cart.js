@@ -13,20 +13,20 @@ class Carts extends React.Component {
             <
             div className = 'container' >
             <
-            h4 className = " bold mt-5 text-center" > Cart List < /h4> <
+            h4 className = " bold mt-5 text-center" > Cart < /h4> <
             Link to = "/checkout"
             className = "card-body-link" >
             <
-            div className = "card mb-3 card-profile img-cartsize card-body-hover" >
+            div className = "card mb-3 checkout-profile img-cartsize card-body-hover" >
+            <
+            div className = "row no-gutters justify-content-center" >
             <
             div className = "row no-gutters" >
             <
-            div className = "row no-gutters" >
-            <
-            div className = "img-cartsize" > < img src = { Bakso }
+            div className = "img-checksize" > < img src = { Bakso }
             className = "card-img card-img-cart" / > < /div> <
             /div> <
-            div className = "col-md-6" >
+            div className = "col-md-12" >
             <
             div className = "card-body" >
             <
@@ -34,19 +34,18 @@ class Carts extends React.Component {
             hr / >
             <
             h6 className = "cart-resto" > Solaria < /h6> <
-            h6 className = "cart-price" > Rp.10000 < /h6> <
+            h6 className = "check-price" > Rp.10000 < /h6> <
             /div> <
             /div> <
             /div> <
             /div> <
-            /Link> <
-            div class = "card" >
+            /Link>
+
             <
             div class = "card-body" >
             <
-            div className = "text-checkout bold" > Checkout: < span className = "cart-balance" > Rp.288800 < /span></div >
+            div className = "text-checkout bold" > Total: < span className = "cart-balance" > Rp.288800 < /span></div >
             <
-            /div> <
             /div> <
             /div>
 

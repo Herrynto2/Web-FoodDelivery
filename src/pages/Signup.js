@@ -5,11 +5,102 @@ import { Link } from 'react-router-dom'
 
 class Signup extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: '',
+            username: '',
+            password: '',
+            email: '',
+            gender: '',
+            work: '',
+            address: ''
+        }
+    }
+    handleName = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            name: e.target.value
+        })
+    }
+    handleUsername = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            username: e.target.value
+        })
+    }
+    handlePassword = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            password: e.target.value
+        })
+    }
+    handleEmail = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            email: e.target.value
+        })
+    }
+    handleGender = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            gender: e.target.value
+        })
+    }
+    handleWork = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            work: e.target.value
+        })
+    }
+    handleAddress = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            address: e.target.value
+        })
+    }
 
-
-
-
-
+    //When login button click
+    handleSignup = (e) => {
+        console.log(this.state.username, this.state.password)
+        e.preventDefault()
+        const data = {
+                name: this.state.name,
+                username: this.state.username,
+                password: this.state.password,
+                email: this.state.email,
+                gender: this.state.gender,
+                work: this.state.work,
+                address: this.state.address
+            }
+            //Validation username && password
+        if (this.state.username === "" && this.state.password === "") {
+            alert('Username or password connot be empty !')
+        } else {
+            // console.log(data) // to get data fotm username & password
+            axios.post('http://localhost:3000/register', data)
+                .then(res => {
+                    console.log(res.data.Verification_codes) //to get data token 
+                    if (res.status === 200) { // 200 is http code success
+                        axios.patch('http://localhost:3000/verify', res.data.Verification_codes)
+                            .then(res => {
+                                prompt('register successfully')
+                            })
+                        try {
+                            this.props.history.push('/login') //push home page
+                        } catch (error) {
+                            console.log(error.response)
+                            alert(error.response.msg)
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log(err.response)
+                    alert(err.response.data.msg)
+                })
+        }
+    }
     render() {
         return ( <
             div >
@@ -23,39 +114,47 @@ class Signup extends React.Component {
             div class = "form-group" >
             <
             input type = "text"
+            onChange = { e => this.handleName(e) }
             name = "name"
             className = "form-control"
             placeholder = "name ..." / >
             <
             input type = "text"
+            onChange = { e => this.handleUsername(e) }
             name = "username"
             className = "form-control mt-3"
             placeholder = "username ..." / >
             <
             input type = "password"
+            onChange = { e => this.handlePassword(e) }
             name = "password"
             className = "form-control mt-3"
             placeholder = "password ..." / >
             <
             input type = "email"
+            onChange = { e => this.handleEmail(e) }
             name = "email"
             className = "form-control mt-3"
             placeholder = "email ..." / >
             <
-            select class = "form-control mt-3"
+            select onChange = { e => this.handleGender(e) }
+            class = "form-control mt-3"
             name = "gender"
             id = "exampleFormControlSelect1"
             placeholder = "Gender" >
             <
+            option className = "hidden" > Choose gander... < /option> <
             option > Man < /option> <
             option > Woman < /option> <
             /select> <
             input type = "text"
+            onChange = { e => this.handleAddress(e) }
             name = "address"
             className = "form-control mt-3"
             placeholder = "address ..." / >
             <
             input type = "text"
+            onChange = { e => this.handleWork(e) }
             name = "work"
             className = "form-control mt-3"
             placeholder = "work ..." / >
@@ -64,7 +163,7 @@ class Signup extends React.Component {
             div className = "text-center" >
             <
             button type = "button"
-            onClick = { e => this.handleSignon(e) }
+            onClick = { e => this.handleSignup(e) }
             className = "btn btn-primary mt-4" > Sign Up < /button> <
             /div> <
             div className = "text-center mt-4" >

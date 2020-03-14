@@ -13,7 +13,7 @@ class Checkout extends React.Component {
             <
             div className = 'container' >
             <
-            h4 className = " bold mt-5 text-center" > Cart List < /h4>
+            h4 className = " bold mt-5 text-center" > Checkout Item < /h4>
 
             <
             div className = "card mb-3 card-profile img-cartsize card-body-hover" >

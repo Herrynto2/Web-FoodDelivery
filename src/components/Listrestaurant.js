@@ -8,9 +8,10 @@ class ListRestaurant extends React.Component {
         return ( <
             div className = "col-lg-3" >
             <
-            Link className = "text-decoration-none" >
+            Link to = { `/detail-restaurant/${this.props.id}` }
+            className = "text-decoration-none" >
             <
-            div className = "card  text-center cardresto" >
+            div className = "card  text-center cardresto mb-5" >
             <
             img src = { Resto }
             className = "card-img-top imgitems" / >

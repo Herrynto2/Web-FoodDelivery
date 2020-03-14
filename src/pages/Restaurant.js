@@ -28,6 +28,7 @@ class Restaurant extends React.Component {
                     console.log(err)
                     console.log(err.response.data.message)
                 })
+
         }
 
 
