@@ -13,13 +13,15 @@ class Carts extends React.Component {
             <
             div className = 'container' >
             <
-            h4 className = " bold mt-5 text-center" > Cart < /h4> <
-            Link to = "/checkout"
-            className = "card-body-link" >
+            h4 className = " bold mt-5 text-center" > Cart < /h4>
+
             <
             div className = "card mb-3 checkout-profile img-cartsize card-body-hover" >
             <
             div className = "row no-gutters justify-content-center" >
+            <
+            Link to = "/checkout"
+            className = "card-body-link" >
             <
             div className = "row no-gutters" >
             <
@@ -33,13 +35,16 @@ class Carts extends React.Component {
             h5 className = "cart-title" > Bakso Pekalongan < /h5> <
             hr / >
             <
-            h6 className = "cart-resto" > Solaria < /h6> <
-            h6 className = "check-price" > Rp.10000 < /h6> <
+            h6 className = "cart-resto text-center" > Solaria < /h6> <
+            h6 className = "check-price text-center" > Rp.10000 < /h6> <
             /div> <
             /div> <
-            /div> <
-            /div> <
-            /Link>
+            /Link> <
+            /div>
+
+            <
+            /div>
+
 
             <
             div class = "card-body" >

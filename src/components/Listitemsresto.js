@@ -23,6 +23,13 @@ class ListItemResto extends React.Component {
             h7 className = "card-resto-category" > { this.props.category } < /h7> <
             h6 className = "textcolor text-price" > { this.props.prices } < /h6> <
             /div> <
+            div className = "btn-group" >
+            <
+            button type = "button"
+            className = "btn btn-primary" > Edit < /button> <
+            button type = "button"
+            className = "btn btn-danger" > Delete < /button> <
+            /div> <
             /div> <
             /Link> <
             /div>

@@ -238,8 +238,18 @@
 }
 
 .cardresto:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
 }
+
+
+/* .btndel {
+    width: 50% !important;
+}
+
+.btnedit {
+    width: 80px;
+    display: inline-block !important;
+} */
 
 .imgcart {
     width: 40px;
@@ -296,9 +306,8 @@
 
 /* Restaurant Items */
 
-.carditemresto {
-    width: 150px !important;
-    height: 200px;
+.carditemresto:hover {
+    transform: scale(1.03, 1.03);
 }
 
 .imgitemresto {
