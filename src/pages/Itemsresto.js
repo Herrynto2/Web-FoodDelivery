@@ -54,6 +54,7 @@ class Itemsresto extends React.Component {
                                     restaurant = { val.name_restaurant }
                                     prices = { val.price }
                                     category = { val.category }
+                                    id = { val.id_items }
                                     />))} <
                                     /div> <
                                     /div> <

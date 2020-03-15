@@ -52,6 +52,8 @@ class Restaurant extends React.Component {
                                     ListRestaurant key = { idx }
                                     name = { val.name_restaurant }
                                     location = { val.location }
+                                    id = { val.id_restaurant }
+                                    logo = { val.logo }
                                     />))} <
                                     /div> <
                                     /div> <

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Bakso from '../img/bakso.png'
+import Bakso from '../img/rendang.jpg'
 import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
 

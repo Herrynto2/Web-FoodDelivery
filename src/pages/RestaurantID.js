@@ -1,93 +1,98 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Bakso from '../img/bakso.png'
+import Bakso from '../img/resto1.jpg'
 import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
-import Reviews from '../components/Reviews'
 import axios from 'axios'
+import ListItemRestoGuest from '../components/Listitemsrestoguest.js'
 
-class ItemsID extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data_items: null
+class RestaurantID extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                data_resto: null,
+                data_items: []
+            }
         }
-    }
 
-    // async componentDidMount() {
-    //     this.setState({ items: items.filter(o => o.id === parseInt(this.props.match.params.id))[2] })
-    // }
+        componentDidMount() {
+            console.log(this.props.match.params.id)
+            this.getDataResto(this.props.match.params.id)
+        }
 
-    componentDidMount() {
-        this.getDataItems()
-    }
+        async getDataResto(id) {
+            await axios.get(`http://localhost:3000/detail-restaurant/${id}`)
+                .then(res => {
+                    console.log(res)
+                    console.log('berhasil')
+                    let dataArr = res.data.detail
+                    let dataArr2 = res.data.items
+                    this.setState({
+                        data_resto: dataArr,
+                        data_items: dataArr2
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
 
-    async getDataItems() {
-        await axios.get("http://localhost:3000/detail-restaurant/1")
-            .then(res => {
-                console.log(res.data.data.name_item)
-                let dataArr = res.data.data
-                this.setState({ data_items: dataArr })
-            })
-            .catch(err => {
-                console.log(err)
-                console.log(err.response.data.message)
-            })
-    }
+        render() {
+                return ( <
+                        div >
+                        <
+                        Navbarsubuser / >
+                        <
+                        div className = 'container' >
+                        <
+                        h4 className = " bold mt-5 text-center" > Restaurant < /h4> {
+                            this.state.data_resto && ( <
+                                div className = "card-body-link" >
+                                <
+                                div className = "card mb-3 card-profile img-cartsize card-body-hover" >
+                                <
+                                div className = "row no-gutters" >
+                                <
+                                div className = "row no-gutters" >
+                                <
+                                div className = "img-cartsize" > < img src = { process.env.REACT_APP_API_URL + this.state.data_resto.logo }
+                                className = "card-img-resto" / > < /div> <
+                                /div> <
+                                div className = "col-md-6" >
+                                <
+                                div className = "card-body" >
+                                <
+                                h5 className = "cart-title text-left" > { this.state.data_resto.name_restaurant } < /h5> <
+                                hr / >
+                                <
+                                h6 className = "cart-resto" > { this.state.data_resto.location } < /h6> <
+                                h6 className = "text-muted text-justify" > { this.state.data_resto.description } < /h6> <
+                                /div>   <
+                                /div> <
+                                /div> <
+                                /div> <
+                                /div>
+                            )
+                        } <
+                        hr className = "mt-5" / >
+                        <
+                        div className = "row " > {
+                            this.state.data_items.map((val, idx) => ( <
+                                    ListItemRestoGuest key = { idx }
+                                    items = { val.name_item }
+                                    images = { val.images }
+                                    restaurant = { val.name_restaurant }
+                                    prices = { val.price }
+                                    category = { val.category }
+                                    id = { val.id_item }
+                                    />))} <
+                                    /div> <
+                                    /div> <
+                                    Footer / >
+                                    <
+                                    /div>
+                                )
+                            }
+                        }
 
-    render() {
-        return ( <
-            div >
-            <
-            Navbarsubuser / >
-            <
-            div className = 'container' >
-            <
-            h4 className = " bold mt-5 text-center" > Items < /h4> {
-                this.state.data_items && ( <
-                    div className = "card-body-link" >
-                    <
-                    div className = "card mb-3 card-profile img-cartsize card-body-hover" >
-                    <
-                    div className = "row no-gutters" >
-                    <
-                    div className = "row no-gutters" >
-                    <
-                    div className = "img-cartsize" > < img src = { Bakso }
-                    className = "card-img card-img-cart" / > < /div> <
-                    /div> <
-                    div className = "col-md-6" >
-                    <
-                    div className = "card-body" >
-                    <
-                    h5 className = "cart-title" > { this.state.data_items.name_item } < /h5> <
-                    hr / >
-                    <
-                    h6 className = "cart-resto" > { this.state.data_items.name_restaurant } < /h6> <
-                    h6 className = "cart-price" > Rp. { this.state.data_items.price } < /h6> <
-                    /div> <
-                    /div> <
-                    /div> <
-                    /div> <
-                    /div>
-                )
-            } <
-            div class = "card" >
-            <
-            div class = "card-body" >
-            <
-            div className = "text-checkout bold" > Checkout: < span className = "cart-balance" > Rp.288800 < /span></div >
-            <
-            /div> <
-            /div> <
-            /div> <
-            Reviews / >
-            <
-            Footer / >
-            <
-            /div>
-        )
-    }
-}
-
-export default ItemsID;
+                        export default RestaurantID;

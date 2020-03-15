@@ -242,13 +242,9 @@
 }
 
 
-/* .btndel {
-    width: 50% !important;
-}
-
-.btnedit {
-    width: 80px;
-    display: inline-block !important;
+/* .btnedit {
+    width: 0% !important;
+    text-align: center;
 } */
 
 .imgcart {
@@ -270,8 +266,8 @@
 
 @media (min-width: 992px) {
     .imgitems {
-        width: 50px;
-        height: 200px;
+        width: 100px;
+        height: 160px;
     }
 }
 
@@ -306,12 +302,34 @@
 
 /* Restaurant Items */
 
+.btndel {
+    width: 565% !important;
+}
+
+.btnadd {
+    width: 920% !important;
+}
+
+@media (min-width: 992px) {
+    .btndel {
+        width: 355% !important;
+    }
+    .btnadd {
+        width: 460% !important;
+    }
+}
+
 .carditemresto:hover {
     transform: scale(1.03, 1.03);
 }
 
+.carditemresto {
+    height: 80%;
+}
+
 .imgitemresto {
-    width: 150px !important;
+    width: 100% !important;
+    height: 56%;
 }
 
 .card-text-resto {
@@ -454,8 +472,8 @@
 }
 
 .card-img-cart {
-    width: 230px !important;
-    height: 200px !important;
+    width: 100% !important;
+    height: 100% !important;
     background-size: cover;
 }
 
@@ -464,6 +482,7 @@
     text-decoration: none !important;
     font-weight: 600;
     color: black !important;
+    text-align: center;
 }
 
 .cart-resto {
@@ -507,11 +526,25 @@
     text-align: center;
 }
 
+.marginbuy {
+    margin-top: -70px !important;
+    border-radius: 5px !important;
+}
+
+.marginplus {
+    margin-top: -70px !important;
+    border-radius: 5px !important;
+}
+
 
 /* Pagination */
 
 
 /* Reviews */
+
+.card-img-detail {
+    width: 100% !important;
+}
 
 .reviews-box {
     padding: 15px 10px 15px 20px;
@@ -533,4 +566,20 @@
 
 .plus {
     font-weight: bolder !important;
+}
+
+.card-img-resto {
+    width: 260px !important;
+    height: 200px !important;
+}
+
+.input-total {
+    width: 200px !important;
+    border-radius: 0px !important;
+    margin-top: -40px;
+    margin-bottom: 30px;
+}
+
+.btn-edit-item-resto {
+    width: 25% !important;
 }

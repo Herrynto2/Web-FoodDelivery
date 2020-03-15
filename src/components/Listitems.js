@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import Bakso from '../img/bakso.png'
+import Bakso from '../img/rendang.jpg'
 import { Link } from 'react-router-dom'
 import cart from '../img/cart.png'
 
@@ -15,7 +15,8 @@ class ListItems extends React.Component {
             <
             div className = "card  text-center cardresto mb-5" >
             <
-            img src = { Bakso }
+            img alt = { this.props.items }
+            src = { process.env.REACT_APP_API_URL + this.props.images }
             className = "card-img-top imgitems" / >
             <
             div className = "card-body text-center" >

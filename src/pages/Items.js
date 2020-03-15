@@ -8,100 +8,79 @@ import { Link } from 'react-router-dom'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class Items extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = {
-                data_items: []
-            }
+    constructor(props) {
+        super(props)
+        this.state = {
+            data_items: []
         }
+    }
 
-        componentDidMount() {
-            this.getDataItems()
-        }
+    componentDidMount() {
+        this.getDataItems()
+    }
 
-        async getDataItems() {
-            await axios.get("http://localhost:3000/browse-items")
-                .then(res => {
-                    console.log(res)
-                    let dataArr = res.data.data
-                    this.setState({ data_items: dataArr })
-                })
-                .catch(err => {
-                    console.log(err)
-                    console.log(err.response.data.message)
-                })
-        }
+    async getDataItems() {
+        await axios.get("http://localhost:3000/browse-items")
+            .then(res => {
+                console.log(res)
+                let dataArr = res.data.data
+                this.setState({ data_items: dataArr })
+            })
+            .catch(err => {
+                console.log(err)
+                console.log(err.response.data.message)
+            })
+    }
 
 
-        render() {
-                return ( <
-                        div > { /* Navbar */ } <
-                        Navbarsub / >
+    render() {
+        return (
+       <div>
+           {/* Navbar */}
+           <Navbarsub/>
 
-                        { /* Content Items */ } <
-                        div >
-                        <
-                        div className = "container" >
-                        <
-                        div className = "row" >
-                        <
-                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > List Items < /h4></div >
-                        <
-                        /div> <
-                        div className = "row " > {
-                            this.state.data_items.map((val, idx) => ( <
-                                    ListItems key = { idx }
-                                    items = { val.name_item }
-                                    restaurant = { val.name_restaurant }
-                                    prices = { val.price }
-                                    id = { val.id_item }
-                                    />))} <
-                                    /div> <
-                                    /div> <
-                                    /div>
+           {/* Content Items */}
+           <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12"><h4 className="text-center bold mt-5 mb-5">List Items</h4></div>
+                    </div>
+                    <div className="row ">
+                    {this.state.data_items.map((val, idx) => (
+                        <ListItems key={idx} images={val.images} items={val.name_item} restaurant={val.name_restaurant} prices={val.price} id={val.id_item} />))}
+                </div>
+              </div>
+            </div>
 
-                                    { /* Pagination */ } <
-                                    div className = "container" >
-                                    <
-                                    div className = "row justify-content-center" >
-                                    <
-                                    Pagination >
-                                    <
-                                    PaginationItem >
-                                    <
-                                    PaginationLink first href = "#" / >
-                                    <
-                                    /PaginationItem> <
-                                    PaginationItem >
-                                    <
-                                    PaginationLink previous href = "#" / >
-                                    <
-                                    /PaginationItem> <
-                                    PaginationItem active >
-                                    <
-                                    PaginationLink href = "#" > 1 <
-                                    /PaginationLink> <
-                                    /PaginationItem> <
-                                    PaginationItem >
-                                    <
-                                    PaginationLink next href = "#" / >
-                                    <
-                                    /PaginationItem> <
-                                    PaginationItem >
-                                    <
-                                    PaginationLink last href = "#" / >
-                                    <
-                                    /PaginationItem> <
-                                    /Pagination> <
-                                    /div> <
-                                    /div>
+            {/* Pagination */}
+            <div className="container">
+            <div className="row justify-content-center">
+            <Pagination >
+                    <PaginationItem >
+                        <PaginationLink first href="#" />
+                    </PaginationItem>
+                    <PaginationItem >
+                        <PaginationLink previous href=""/>
+                    </PaginationItem>
+                    <PaginationItem active>
+                        <PaginationLink href="#">1
+                        </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                         <PaginationLink next href="#" />
+                    </PaginationItem>
+                         <PaginationItem>
+                    <PaginationLink last href="#" />
+                    </PaginationItem>
+            </Pagination>
+            </div>
+            </div>
+            
+            {/* Footer */}
+           <Footer/>
+        </div>
+        )
+    }
+}
 
-                                    { /* Footer */ } <
-                                    Footer / >
-                                    <
-                                    /div>
-                                )
-                            }
-                        }
-
-                        export default Items;
+export default Items;

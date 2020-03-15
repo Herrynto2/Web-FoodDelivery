@@ -84,10 +84,10 @@ class Signup extends React.Component {
                     if (res.status === 200) { // 200 is http code success
                         axios.patch('http://localhost:3000/verify', res.data.Verification_codes)
                             .then(res => {
-                                prompt('register successfully')
+                                alert('register successfully')
                             })
                         try {
-                            this.props.history.push('/login') //push home page
+                            this.props.history.push('/verify') //push home page
                         } catch (error) {
                             console.log(error.response)
                             alert(error.response.msg)

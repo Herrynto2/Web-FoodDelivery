@@ -5,7 +5,7 @@ import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
 import axios from 'axios'
 
-class Checkout extends React.Component {
+class RestaurantItemsID extends React.Component {
     // constructor(props) {
     //     super(props)
     //     this.state = {
@@ -43,9 +43,13 @@ class Checkout extends React.Component {
             <
             div className = 'container' >
             <
-            h4 className = " bold mt-5 mb-5 text-center " > Checkout Item < /h4>
+            h4 className = " bold mt-5 mb-5 text-center " > Items < /h4>
 
             { /* {this.state.data_items && ( */ } <
+            div className = "row" >
+            <
+            div className = "col-lg-5" >
+            <
             div className = "card-body-link" >
             <
             div className = "card mb-5 card-profil" >
@@ -59,7 +63,7 @@ class Checkout extends React.Component {
             alt = "..." / >
             <
             /div> <
-            div className = "col-md-6" >
+            div className = "col-md-12" >
             <
             div className = "card-body" >
             <
@@ -73,22 +77,51 @@ class Checkout extends React.Component {
             /div> <
             /div> <
             /div> <
-            input type = "number"
-            class = "form-control input-total"
-            min = "1"
-            placeholder = "total items ..." / > { /* )} */ }
+            /div>
 
             <
-            div class = "card" >
+            div className = "col-lg-7" >
             <
-            div class = "card-body" >
+            input type = "text"
+            onChange = { e => this.handleName(e) }
+            name = "name"
+            className = "form-control mb-3"
+            placeholder = "items name..." / >
             <
-            div className = "text-checkout bold" > Checkout:
+            input type = "text"
+            onChange = { e => this.handleName(e) }
+            name = "name"
+            className = "form-control mb-3"
+            placeholder = "category..." / >
             <
-            button className = "ml-3 btn btn-danger bold" > Rp.100000 < /button> <
+            input type = "text"
+            onChange = { e => this.handleName(e) }
+            name = "name"
+            className = "form-control mb-3"
+            placeholder = "price..." / >
+            <
+            input type = "text"
+            onChange = { e => this.handleName(e) }
+            name = "name"
+            className = "form-control mb-3"
+            placeholder = "description..." / >
+            <
+            input type = "file"
+            className = "form-control-file mb-3" / >
+            <
+            button className = 'btn btn-danger block btn-edit-item-resto mb-5' > Edit < /button> <
+            input type = "number"
+            onChange = { e => this.handleName(e) }
+            name = "name"
+            className = "form-control mb-3"
+            min = "1"
+            placeholder = "add items..." / >
+            <
+            button className = 'btn btn-danger block btn-edit-item-resto' > Add < /button>                  <
             /div> <
-            /div> <
-            /div> <
+            /div> { /* )} */ }
+
+            <
             /div>
 
 
@@ -98,4 +131,4 @@ class Checkout extends React.Component {
     }
 }
 
-export default Checkout;
+export default RestaurantItemsID;

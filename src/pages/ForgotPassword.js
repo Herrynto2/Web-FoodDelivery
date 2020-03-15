@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/Login.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Alert } from 'reactstrap';
 
 class ForgotPassword extends React.Component {
 
@@ -33,29 +34,32 @@ class ForgotPassword extends React.Component {
     handleSend = (e) => {
         e.preventDefault()
         const data = {
-            username: this.state.code,
+            username: this.state.username,
             newpassword: this.state.newpassword,
             confirmpassword: this.state.confirmpassword
         }
         if (this.state.username === "" || this.state.newpassword === "" || this.state.confirmpassword === "") {
             alert('text still empty!')
+            return
+        } else if (this.state.newpassword !== this.state.confirmpassword) {
+            alert('confirm password must be same')
+            return
         } else {
             axios.patch('http://localhost:3000/forgot-password', data)
                 .then(res => {
-                    console.log(res.data)
-                    if (res.status === 200) {
+                    console.log(res.data.verification_code)
+                    if (res.data.success !== false) {
                         try {
-                            alert('verification successfully')
-                            this.props.history.push('/login')
+                            this.props.history.push('/verify')
+                            prompt("please check email to get verification code", res.data.verification_code)
                         } catch (error) {
-                            console.log(error.response)
                             alert(error.response.msg)
                         }
+                    } else {
+                        alert('username not found')
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                    console.log(err.response)
                     alert(err.response.msg)
                 })
         }

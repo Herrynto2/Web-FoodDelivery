@@ -17,6 +17,8 @@ class Verify extends React.Component {
         })
     }
 
+
+
     //When login button click
     handleVerify = (e) => {
         e.preventDefault()
@@ -27,12 +29,12 @@ class Verify extends React.Component {
             alert('code still empty!')
         } else {
             // console.log(data) // to get data fotm username & password
-            axios.patch('http://localhost:3000/verify?code=', data)
+            axios.patch(`http://localhost:3000/verify?code=${data.code}`)
                 .then(res => {
                     console.log(res.data) //to get data token 
                     if (res.status === 200) { // 200 is http code success
                         try {
-                            prompt('verification successfully', res.data)
+                            alert('verification successfully', res.data)
                             this.props.history.push('/login') //push home page
                         } catch (error) {
                             console.log(error.response)

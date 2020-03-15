@@ -5,8 +5,29 @@ import Youtube from '../img/youtube.png'
 import Facebook from '../img/fb.png'
 import Android from '../img/playstore.png'
 import Mac from '../img/playstore2.png'
+import axios from 'axios'
 
 class Footer extends React.Component {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         search: '',
+    //         result: {},
+    //         loading:false,
+    //         message: ''
+    //     }
+    // }
+
+
+    // handleInput = (e) => {
+    //     console.log(e.target.name, e.target.value)
+    //     const search = e.target.value
+    //     this.setState({
+    //         state: {search:search}
+    //     })
+    // }
+
+
     render() {
         return ( <
             div >
@@ -67,7 +88,8 @@ class Footer extends React.Component {
             <
             form class = "form-inline my-2 my-lg-0" >
             <
-            input className = "form-control searchfooter mr-sm-2"
+            input name = "search"
+            className = "form-control searchfooter mr-sm-2"
             type = "search"
             placeholder = "Get your items now ..." / >
             <

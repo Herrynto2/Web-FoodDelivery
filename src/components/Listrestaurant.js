@@ -13,7 +13,7 @@ class ListRestaurant extends React.Component {
             <
             div className = "card  text-center cardresto mb-5" >
             <
-            img src = { Resto }
+            img src = { process.env.REACT_APP_API_URL + this.props.logo }
             className = "card-img-top imgitems" / >
             <
             div className = "card-body text-center" >

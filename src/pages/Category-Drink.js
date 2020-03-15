@@ -55,6 +55,7 @@ class CategoryDrink extends React.Component {
                                     restaurant = { val.name_restaurant }
                                     prices = { val.price }
                                     id = { val.id_item }
+                                    images = { val.images }
                                     />))} <
                                     /div> <
                                     /div> <

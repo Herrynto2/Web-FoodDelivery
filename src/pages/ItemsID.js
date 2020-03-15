@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import Bakso from '../img/bakso.png'
+import Bakso from '../img/rendang.jpg'
 import { Tab, Tabs, TabPanel, TabList } from 'react-tabs';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Navbarsubuser from '../components/Navbarsubuser'
@@ -19,14 +19,16 @@ class ItemsID extends React.Component {
         }
 
         componentDidMount() {
-            this.getDataItems()
+            console.log(this.props.match.params.id)
+            this.getDataItems(this.props.match.params.id)
         }
 
-        async getDataItems() {
+        async getDataItems(id) {
             // await axios.get("http://localhost:3000/detail-items/" + this.props.match.params.id)
-            await axios.get("http://localhost:3000/detail-items/2")
+            await axios.get(`http://localhost:3000/detail-items/${id}`)
                 .then(res => {
                     console.log(res)
+                    console.log('berhasil')
                     console.log(res.data.review.name_user)
                     let dataArr = res.data.data
                     let dataArr2 = res.data.review
@@ -37,7 +39,6 @@ class ItemsID extends React.Component {
                 })
                 .catch(err => {
                     console.log(err)
-                    console.log(err.response.data.message)
                 })
         }
 
@@ -50,27 +51,31 @@ class ItemsID extends React.Component {
                         <
                         div className = 'container' >
                         <
-                        h4 className = " bold mt-5 text-center" > Items < /h4> {
+                        h4 className = " bold mt-5 mb-5 text-center" > Items < /h4>
+
+                        {
                             this.state.data_items && ( <
                                 div className = "card-body-link" >
                                 <
-                                div className = "card mb-3 card-profile img-cartsize card-body-hover" >
+                                div className = "card mb-5 card-profil" >
                                 <
                                 div className = "row no-gutters" >
                                 <
                                 div className = "row no-gutters" >
                                 <
-                                div className = "img-cartsize" > < img src = { Bakso }
-                                className = "card-img card-img-cart" / > < /div> <
+                                img src = { process.env.REACT_APP_API_URL + this.state.data_items.images }
+                                className = "card-img card-img-detail"
+                                alt = "..." / >
+                                <
                                 /div> <
                                 div className = "col-md-6" >
                                 <
                                 div className = "card-body" >
                                 <
-                                h5 className = "cart-title" > { this.state.data_items.name_item } < /h5> <
+                                h5 className = "cart-titles" > { this.state.data_items.name_restaurant } < /h5> <
                                 hr / >
                                 <
-                                h6 className = "cart-resto" > { this.state.data_items.name_restaurant } - { this.state.data_items.location } < /h6> <
+                                h6 className = "cart-resto" > { this.state.data_items.name_item } - { this.state.data_items.location } < /h6> <
                                 h6 className = "cart-price" > Rp. { this.state.data_items.price } < /h6> <
                                 /div> <
                                 /div> <
@@ -79,8 +84,8 @@ class ItemsID extends React.Component {
                                 /div>
                             )
                         } <
-                        button className = "btn btn-warning block" > Buy < /button> <
-                        button className = "btn btn-warning plus" > + < /button> <
+                        button className = "btn btn-warning block marginbuy" > Buy < /button> <
+                        button className = "btn btn-warning plus marginplus" > + < /button> <
                         /div>
 
                         <
