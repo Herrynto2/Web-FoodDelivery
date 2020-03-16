@@ -13,7 +13,7 @@ class CreateRestaurant extends React.Component {
             <
             div className = "row justify-content-center" >
             <
-            div className = "col-4 info-panel" >
+            div className = "col-6-lg info-panel" >
             <
             div className = "row" >
             <
@@ -69,7 +69,7 @@ class CreateRestaurant extends React.Component {
             Link to = "/restaurant"
             className = "ml-3"
             href = "/components/" > < button type = "button"
-            className = "btn btn-primary mt-4" > Create < /button></Link >
+            className = " btn-auth btn btn-warning mt-4" > Create < /button></Link >
             <
             /div> <
             div className = "text-center mt-3" >

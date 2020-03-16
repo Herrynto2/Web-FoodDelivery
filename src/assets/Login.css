@@ -96,3 +96,7 @@
 .btnverify {
     text-align: right !important;
 }
+
+.btn-auth {
+    border-radius: 4px !important;
+}

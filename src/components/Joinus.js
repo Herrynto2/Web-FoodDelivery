@@ -13,7 +13,7 @@ class Joinus extends React.Component {
             div className = "row p-5" >
             <
             div className = "col-sm-6" > < /div> <
-            div className = "col-sm-6 justify-content-center" >
+            div className = "col-sm-6 justify-content-center body-joinus" >
             <
             h1 className = "bold colorjoinus mt-2 mb-3" > Register your restaurant in our marketplace < /h1> <
             span className = "contentjoinus" > Axelcious already has many partners and is very trusted Lorem ipsum dolor sit amet consectetur adipisicing elit.Natus, voluptatem. < /span> <
