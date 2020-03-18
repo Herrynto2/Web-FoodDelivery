@@ -8,17 +8,18 @@ class itemsrestoDetail extends React.Component {
         super(props)
         this.state = {
             data_items: null,
-            name: '',
+            name_item: '',
             category: '',
             price: '',
             description: '',
+            images: null,
             total_item: ''
         }
     }
     handleName = (e) => {
         console.log(e.target.value)
         this.setState({
-            name: e.target.value
+            name_item: e.target.value
         })
     }
     handleCategory = (e) => {
@@ -39,6 +40,12 @@ class itemsrestoDetail extends React.Component {
             description: e.target.value
         })
     }
+    handleImages = (e) => {
+        console.log(e.target.files[0])
+        this.setState({
+            images: e.target.files[0]
+        })
+    }
     handleValue = (e) => {
         console.log(e.target.value)
         this.setState({
@@ -48,12 +55,12 @@ class itemsrestoDetail extends React.Component {
 
     componentDidMount() {
         this.getDataItems(this.props.match.params.id)
-        console.log(this.props.match.params.id)
     }
     async getDataItems(id) {
         console.log(window.localStorage.getItem('token'))
         await axios.get(`http://localhost:3000/restaurant-items/${id}`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
             .then(res => {
+                console.log(res.data)
                 let dataArr = res.data.data
                 this.setState({
                     data_items: dataArr
@@ -66,16 +73,14 @@ class itemsrestoDetail extends React.Component {
 
     //Edit Items
     handleEdit = (e) => {
-        console.log(this.state.name, this.state.category)
+        const data = new FormData()
+        data.append('name_item', this.state.name_item)
+        data.append('category', this.state.category)
+        data.append('price', this.state.price)
+        data.append('description', this.state.description)
+        data.append('images', this.state.images)
 
-        console.log("haii")
-        const data = {
-            name: this.state.name,
-            category: this.state.category,
-            price: this.state.price,
-            description: this.description
-        }
-        if (this.state.name === "" || this.state.category === "" || this.state.price === "" || this.state.description === "") {
+        if (this.state.name_item === "" || this.state.category === "" || this.state.price === "" || this.state.description === "") {
             alert('text still empty!')
         } else {
             // console.log(data) // to get data fotm username & password
@@ -140,7 +145,7 @@ class itemsrestoDetail extends React.Component {
             <
             Navbarsubuser / >
             <
-            div className = 'container' >
+            div className = 'container marginitemresto' >
             <
             h4 className = " bold mt-5 mb-5 text-center " > Items < /h4>
 
@@ -186,27 +191,28 @@ class itemsrestoDetail extends React.Component {
                     onChange = { e => this.handleName(e) }
                     name = "name"
                     className = "form-control mb-3"
-                    placeholder = "items name..." / >
-                    <
+                    placeholder = { this.state.data_items.name_item }
+                    /> <
                     input type = "text"
                     onChange = { e => this.handleCategory(e) }
                     name = "category"
                     className = "form-control mb-3"
-                    placeholder = "category..." / >
-                    <
+                    placeholder = { this.state.data_items.category }
+                    /> <
                     input type = "text"
                     onChange = { e => this.handlePrice(e) }
                     name = "price"
                     className = "form-control mb-3"
-                    placeholder = "price..." / >
-                    <
+                    placeholder = { this.state.data_items.price }
+                    /> <
                     input type = "text"
                     onChange = { e => this.handleDescription(e) }
                     name = "description"
                     className = "form-control mb-3"
-                    placeholder = "description..." / >
-                    <
-                    input type = "file"
+                    placeholder = { this.state.data_items.description }
+                    /> <
+                    input onChange = { e => this.handleImages(e) }
+                    type = "file"
                     className = "form-control-file mb-3" / >
                     <
                     button onClick = { e => this.handleEdit(e) }
