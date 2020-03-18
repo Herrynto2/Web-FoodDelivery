@@ -42,7 +42,7 @@ class Profilerestos extends React.Component {
             Link to = "/restaurantprofile"
             className = "card-body-link" >
             <
-            div className = "card mb-3 card-profile card-body-hover" >
+            div className = "card mb-5 mt-5 card-body-hover" >
             <
             div className = "row no-gutters" >
             <

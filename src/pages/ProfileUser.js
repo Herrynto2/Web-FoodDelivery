@@ -5,11 +5,19 @@ import axios from 'axios'
 import Navbarsubuser from '../components/Navbarsubuser'
 
 class Profileuser extends React.Component {
+
+    //Get Data Profile
     constructor(props) {
         super(props)
         this.state = {
             data_profile: {},
-            balance: ''
+            saldo: '',
+            name_user: '',
+            email: '',
+            gender: '',
+            work: '',
+            address: '',
+            images: null
         }
     }
     componentDidMount() {
@@ -22,7 +30,7 @@ class Profileuser extends React.Component {
             .then(res => {
                 const x = "heriheryanto"
                     // console.log(x.substr(2, 4))
-                console.log(res.data.data[0][0])
+                console.log(res.data.data[0][0].images)
                 let dataArr = res.data.data[0][0]
                 this.setState({
                     data_profile: dataArr
@@ -33,24 +41,32 @@ class Profileuser extends React.Component {
             })
     }
 
+    // componentWillUpdate(firstState){
+    //     if(parseInt(firstState.saldo) !== parseInt(this.state.saldo)){
+    //         this.getDataUsers()
+    //         return;
+    //     } else {
+    //         return;
+    //     }
+    // }
+
     // Topup
     handleBalance = (e) => {
         console.log(e.target.name, e.target.value)
         this.setState({
-            balance: e.target.value
+            saldo: e.target.value
         })
     }
     handleTopup = (e) => {
         e.preventDefault()
         const data = {
-            balance: this.state.balance
+            saldo: this.state.saldo
         }
-        if (this.state.balance === "") {
-            alert('Please input value!')
+        if (this.state.saldo === "") {
+            alert('Please input the value!')
         } else {
-
-            // console.log(data) // to get data fotm username & password
-            axios.patch(`http://localhost:3000/topup`, JSON.stringify(data), { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+            console.log(data)
+            axios.patch(`http://localhost:3000/topup`, data, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
                     console.log(this.state.balance) //to get data token 
                     if (res.data.success !== false) { // 200 is http code success
@@ -58,7 +74,6 @@ class Profileuser extends React.Component {
                             alert('topup successfully', res.data)
                             this.props.history.push('/userprofile') //push home page
                         } catch (error) {
-                            console.log(error.response)
                             alert(error.response.msg)
                         }
                     } else {
@@ -66,20 +81,89 @@ class Profileuser extends React.Component {
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                    console.log(err.response)
+                    console.log('kkkk', err.response)
                     alert(err.response.msg)
                 })
         }
     }
 
+    //Edit Profile
+    handleName = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            name_user: e.target.value
+        })
+    }
+    handleEmail = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            email: e.target.value
+        })
+    }
+    handleGender = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            gender: e.target.value
+        })
+    }
+    handleWork = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            work: e.target.value
+        })
+    }
+    handleAddress = (e) => {
+        console.log(e.target.name, e.target.value)
+        this.setState({
+            address: e.target.value
+        })
+    }
+    handleImages = (e) => {
+        console.log(e.target.files[0])
+        this.setState({
+            images: e.target.files[0]
+        })
+    }
+    handleProfile = (e) => {
+        e.preventDefault()
+        const data = new FormData()
+        data.append('name_user', this.state.name_user)
+        data.append('email', this.state.email)
+        data.append('gender', this.state.gender)
+        data.append('address', this.state.address)
+        data.append('work', this.state.work)
+        data.append('images', this.state.images)
+
+        if (this.state.email === "") {
+            alert('Please input the value!')
+        } else {
+            axios.patch(`http://localhost:3000/profile`, data, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.success !== false) {
+                        try {
+                            alert('update user successfully', res.data)
+                            this.props.history.push('/userprofile')
+                        } catch (error) {
+                            alert(error.response.msg)
+                        }
+                    } else {
+                        alert("failed to update", res.data)
+
+                    }
+                })
+                .catch(err => {
+                    console.log('key', err.response)
+                    alert(err.response.msg)
+                })
+        }
+    }
 
     render() {
         return ( <
             div >
             <
             Navbarsubuser / >
-
             <
             div className = "container" >
             <
@@ -95,16 +179,18 @@ class Profileuser extends React.Component {
             <
             div className = "col-lg-4 sizeprofile" >
             <
-            img src = { this.state.data_profile.images }
+            img src = { process.env.REACT_APP_API_URL + this.state.data_profile.images }
             className = "sizeuserprofile mb-3" / >
             <
             input type = "file"
-            className = "form-control-file"
-            id = "exampleFormControlInput1" / >
+            onChange = { e => this.handleImages(e) }
+            className = "form-control-file" / >
             <
-            textarea className = "form-control address"
+            textarea onChange = { e => this.handleAddress(e) }
+            name = "address"
+            className = "form-control address"
             rows = "3"
-            value = { this.state.data_profile.address } > < /textarea> <
+            placeholder = { this.state.data_profile.address } > < /textarea> <
             /div> <
             div className = "col-lg-1" > < /div> <
             div className = "col-lg-6" >
@@ -131,39 +217,48 @@ class Profileuser extends React.Component {
             label
             for = "exampleFormControlInput1"
             className = " sml" > Name < /label> <
-            input type = "text"
+            input onChange = { e => this.handleName(e) }
+            name = "name"
+            type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            value = { this.state.data_profile.name_user }
+            placeholder = { this.state.data_profile.name_user }
             disable / >
             <
             label
             for = "exampleFormControlInput1"
             className = "mt-2 sml" > Email < /label> <
-            input type = "email"
+            input onChange = { e => this.handleEmail(e) }
+            type = "email"
+            name = "email"
             className = "form-control"
             id = "exampleFormControlInput1"
-            value = { this.state.data_profile.email }
+            placeholder = { this.state.data_profile.email }
             /> <
             label
             for = "exampleFormControlInput1"
             className = "mt-2 sml" > Gender < /label> <
-            select class = "form-control"
-            id = "exampleFormControlSelect1"
-            value = { this.state.data_profile.gender } >
+            select onChange = { e => this.handleGender(e) }
+            name = "gender"
+            class = "form-control"
+            id = "exampleFormControlSelect1" >
             <
+            option > --Select gender-- < /option> <
             option > Man < /option> <
             option > Woman < /option> <
             /select>   <
             label
             for = "exampleFormControlInput1"
             className = "mt-2 sml" > Work < /label> <
-            input type = "text"
+            input onChange = { e => this.handleWork(e) }
+            name = "work"
+            type = "text"
             className = "form-control mb-4"
             id = "exampleFormControlInput1"
-            value = { this.state.data_profile.work }
+            placeholder = { this.state.data_profile.work }
             /> <
-            button class = "btn btn-warning my-2 my-sm-0"
+            button onClick = { e => this.handleProfile(e) }
+            class = "btn btn-warning my-2 my-sm-0"
             type = "submit" > Edit < /button> <
             /div> <
             /div> <

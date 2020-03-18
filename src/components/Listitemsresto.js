@@ -1,33 +1,40 @@
 import React from 'react';
 import axios from 'axios'
-import Bakso from '../img/rendang.jpg'
 import { Link } from 'react-router-dom'
-import cart from '../img/cart.png'
 
 class ListItemResto extends React.Component {
 
-    handleDelete = (e) => {
-        e.preventDefault()
-        axios.delete(`http://localhost:3000/items/62`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
-            .then(res => {
-                console.log(res.data)
-                if (res.data.success !== false) {
-                    try {
-                        alert('delete items successfully')
-                    } catch (error) {
-                        console.log(error.response)
-                        alert(error.response.msg)
-                    }
-                } else {
-                    alert('add items failed')
-                }
-            })
-            .catch(err => {
-                console.log(err)
-                console.log(err.response)
-                alert(err.response.msg)
-            })
-    }
+    // handleAdd = async (e) => {
+    //     const data = {
+    //         total_item: this.state.total_item
+    //     }
+    //     if (this.state.value === "") {
+    //         alert('value still empty!')
+    //     } else {
+    //         await axios.patch(`${process.env.REACT_APP_API_URL}/items/total/${this.props.match.params.id}`, { total_item: `${this.state.total_item}` }, {
+    //             headers: {
+    //                 Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
+    //             }
+    //         })
+    //             .then(res => {
+    //                 console.log(res)
+    //                 if (res.data.success !== false) {
+    //                     try {
+    //                         alert('add value items successfully')
+    //                     } catch (error) {
+    //                         console.log(error.response)
+    //                         alert(error.response.msg)
+    //                     }
+    //                 } else {
+    //                     alert('add items failed')
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 console.log({ err })
+    //                 alert(err.response.msg)
+    //             })
+    //     }
+    // }
 
     render() {
         return ( <

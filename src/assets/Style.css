@@ -641,3 +641,7 @@
 .align-comment {
     text-align: center !important;
 }
+
+.card-profile {
+    margin-top: 180px;
+}

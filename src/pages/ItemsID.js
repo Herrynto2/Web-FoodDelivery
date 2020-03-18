@@ -13,7 +13,8 @@ class ItemsID extends React.Component {
             super(props)
             this.state = {
                     data_items: null,
-                    data_review: []
+                    data_review: [],
+                    review: ''
                 }
                 // this.getDataItems = this.getDataItems.bind(this)
         }
@@ -27,9 +28,6 @@ class ItemsID extends React.Component {
             // await axios.get("http://localhost:3000/detail-items/" + this.props.match.params.id)
             await axios.get(`http://localhost:3000/detail-items/${id}`)
                 .then(res => {
-                    console.log(res)
-                    console.log('berhasil')
-                    console.log(res.data.review.name_user)
                     let dataArr = res.data.data
                     let dataArr2 = res.data.review
                     this.setState({
@@ -45,36 +43,37 @@ class ItemsID extends React.Component {
         handleTextComment = (e) => {
             console.log(e.target.value)
             this.setState({
-                comment: e.target.value
+                review: e.target.value
             })
         }
 
-        handleComment = (e) => {
-            e.preventDefault()
+        handleComment = async(e) => {
             const data = {
-                comment: this.state.comment
+                review: this.state.review
             }
-            if (this.state.comment === "") {
-                alert('comment still empty!')
+            if (this.state.review === "") {
+                alert('value still empty!')
             } else {
-                // console.log(data) // to get data fotm username & password
-                axios.post(`http://localhost:3000/review/58`, { comment: this.state.comment }, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+                await axios.post(`${process.env.REACT_APP_API_URL}/review/${this.props.match.params.id}`, data, {
+                        headers: {
+                            Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
+                        }
+                    })
                     .then(res => {
-                        console.log(res.data) //to get data token 
-                        if (res.data.success !== false) { // 200 is http code success
+                        console.log(res)
+                        if (res.data.success !== false) {
                             try {
-                                alert('give comment successfully', res.data)
+                                alert('add comment successfully')
                             } catch (error) {
                                 console.log(error.response)
                                 alert(error.response.msg)
                             }
                         } else {
-                            alert('give comment failed')
+                            alert('add comment failed')
                         }
                     })
                     .catch(err => {
-                        console.log(err)
-                        console.log(err.response)
+                        console.log({ err })
                         alert(err.response.msg)
                     })
             }
@@ -165,15 +164,8 @@ class ItemsID extends React.Component {
                                     className = "btn btn-danger" > Comment < /button> <
                                     /div> <
                                     /TabPanel> <
-                                    /Tabs>
-
-                                    <
-                                    /div>
-
-
-
-
-                                    <
+                                    /Tabs> <
+                                    /div> <
                                     Footer / >
                                     <
                                     /div>

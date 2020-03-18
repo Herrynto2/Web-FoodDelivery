@@ -31,6 +31,7 @@ class Itemsresto extends React.Component {
                     console.log(err)
                 })
         }
+
         render() {
                 return ( <
                         div > { /* Navbar */ } <
