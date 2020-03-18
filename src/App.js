@@ -19,6 +19,7 @@ import Carts from '../src/pages/cart'
 import Checkout from '../src/pages/Checkout'
 import Itemsresto from '../src/pages/Itemsresto'
 import ItemsRestoDetail from '../src/pages/Itemsrestodetail'
+import ItemsRestoAdd from '../src/pages/Itemsrestoadd'
 import Verify from '../src/pages/Signupverify'
 import ItemsID from '../src/pages/ItemsID'
 import RestaurantID from '../src/pages/RestaurantID'
@@ -27,177 +28,86 @@ import CategoryDrink from '../src/pages/Category-Drink'
 import CategoryFood from '../src/pages/Category-Food'
 
 function App() {
-    return ( <
-            BrowserRouter >
-            <
-            Switch >
-            <
-            Route exact path = "/"
-            render = {
-                (props) =>
-                ( < Main {...props }
-                    />)}/ >
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" render={(props) =>
+          (<Main{...props}/>)}/>
 
-                    <
-                    Route path = "/home"
-                    render = {
-                        (props) =>
-                        ( < Home {...props }
-                            />)}/ >
+          <Route path="/home" render={(props) =>
+          (<Home{...props}/>)}/>
 
-                            <
-                            Route path = "/Login"
-                            render = {
-                                (props) =>
-                                ( < Login {...props }
-                                    />)}/ >
+        <Route path="/Login" render={(props) =>
+          (<Login{...props}/>)}/>
 
-                                    <
-                                    Route path = "/verify"
-                                    render = {
-                                        (props) =>
-                                        ( < Verify {...props }
-                                            />)}/ >
+        <Route path="/verify" render={(props) =>
+          (<Verify{...props}/>)}/>
 
-                                            <
-                                            Route path = "/user"
-                                            render = {
-                                                (props) =>
-                                                ( < Homeuser {...props }
-                                                    />)}/ >
+        <Route path="/user" render={(props) =>
+          (<Homeuser{...props}/>)}/>
 
-                                                    <
-                                                    Route path = "/signup"
-                                                    render = {
-                                                        (props) =>
-                                                        ( < Signup {...props }
-                                                            />)}/ >
+        <Route path="/signup" render={(props) =>
+          (<Signup{...props}/>)}/>
 
-                                                            <
-                                                            Route path = "/forgot-password"
-                                                            render = {
-                                                                (props) =>
-                                                                ( < ForgotPassword {...props }
-                                                                    />)}/ >
+        <Route path="/forgot-password" render={(props) =>
+          (<ForgotPassword{...props}/>)}/>
 
-                                                                    <
-                                                                    Route path = "/browse-items"
-                                                                    render = {
-                                                                        (props) =>
-                                                                        ( < Items {...props }
-                                                                            />)}/ >
+        <Route path="/browse-items" render={(props) =>
+          (<Items{...props}/>)}/>
 
-                                                                            <
-                                                                            Route path = "/detail-items/:id"
-                                                                            render = {
-                                                                                (props) =>
-                                                                                ( < ItemsID {...props }
-                                                                                    />)}/ >
+        <Route path="/detail-items/:id" render={(props) =>
+          (<ItemsID{...props}/>)}/>
 
-                                                                                    <
-                                                                                    Route path = "/browse-restaurant"
-                                                                                    render = {
-                                                                                        (props) =>
-                                                                                        ( < Restaurant {...props }
-                                                                                            />)}/ >
+        <Route path="/browse-restaurant" render={(props) =>
+          (<Restaurant{...props}/>)}/>
 
-                                                                                            <
-                                                                                            Route path = "/detail-restaurant/:id"
-                                                                                            render = {
-                                                                                                (props) =>
-                                                                                                ( < RestaurantID {...props }
-                                                                                                    />)}/ >
+        <Route path="/detail-restaurant/:id" render={(props) =>
+          (<RestaurantID{...props}/>)}/>
 
-                                                                                                    <
-                                                                                                    Route path = "/browse-category/2"
-                                                                                                    render = {
-                                                                                                        (props) =>
-                                                                                                        ( < CategoryDrink {...props }
-                                                                                                            />)}/ >
+        <Route path="/browse-category/2" render={(props) =>
+          (<CategoryDrink{...props}/>)}/>
 
-                                                                                                            <
-                                                                                                            Route path = "/browse-category/1"
-                                                                                                            render = {
-                                                                                                                (props) =>
-                                                                                                                ( < CategoryFood {...props }
-                                                                                                                    />)}/ >
+        <Route path="/browse-category/1" render={(props) =>
+          (<CategoryFood{...props}/>)}/>
 
-                                                                                                                    <
-                                                                                                                    Route path = "/food/:id"
-                                                                                                                    render = {
-                                                                                                                        (props) =>
-                                                                                                                        ( < FoodID {...props }
-                                                                                                                            />)}/ >
+        <Route path="/food/:id" render={(props) =>
+          (<FoodID{...props}/>)}/>
 
-                                                                                                                            <
-                                                                                                                            Route path = "/joinus"
-                                                                                                                            render = {
-                                                                                                                                (props) =>
-                                                                                                                                ( < CreateRestaurant {...props }
-                                                                                                                                    />)}/ >
+        <Route path="/joinus" render={(props) =>
+          (<CreateRestaurant{...props}/>)}/>
 
-                                                                                                                                    <
-                                                                                                                                    Route path = "/profile"
-                                                                                                                                    render = {
-                                                                                                                                        (props) =>
-                                                                                                                                        ( < Profile {...props }
-                                                                                                                                            />)}/ >
+        <Route path="/profile" render={(props) =>
+          (<Profile{...props}/>)}/>
 
-                                                                                                                                            <
-                                                                                                                                            Route path = "/userprofile"
-                                                                                                                                            render = {
-                                                                                                                                                (props) =>
-                                                                                                                                                ( < Profileuser {...props }
-                                                                                                                                                    />)}/ >
+        <Route path="/userprofile" render={(props) =>
+          (<Profileuser{...props}/>)}/>
 
-                                                                                                                                                    <
-                                                                                                                                                    Route path = "/restaurantprofile"
-                                                                                                                                                    render = {
-                                                                                                                                                        (props) =>
-                                                                                                                                                        ( < Profileresto {...props }
-                                                                                                                                                            />)}/ >
+        <Route path="/restaurantprofile" render={(props) =>
+          (<Profileresto{...props}/>)}/>
 
-                                                                                                                                                            <
-                                                                                                                                                            Route path = "/items"
-                                                                                                                                                            render = {
-                                                                                                                                                                (props) =>
-                                                                                                                                                                ( < Itemsresto {...props }
-                                                                                                                                                                    />)}/ >
+        <Route path="/items" render={(props) =>
+          (<Itemsresto{...props}/>)}/>
 
-                                                                                                                                                                    <
-                                                                                                                                                                    Route path = "/restaurant-items/:id"
-                                                                                                                                                                    render = {
-                                                                                                                                                                        (props) =>
-                                                                                                                                                                        ( < ItemsRestoDetail {...props }
-                                                                                                                                                                            />)}/ >
+        <Route path="/restaurant-items" render={(props) =>
+          (<ItemsRestoAdd{...props}/>)}/>
 
-                                                                                                                                                                            <
-                                                                                                                                                                            Route path = "/browse-items/:id"
-                                                                                                                                                                            render = {
-                                                                                                                                                                                (props) =>
-                                                                                                                                                                                ( < ItemsID {...props }
-                                                                                                                                                                                    />)}/ >
+        <Route path="/restaurant-items/:id" render={(props) =>
+          (<ItemsRestoDetail{...props}/>)}/>
 
-                                                                                                                                                                                    <
-                                                                                                                                                                                    Route path = "/cart"
-                                                                                                                                                                                    render = {
-                                                                                                                                                                                        (props) =>
-                                                                                                                                                                                        ( < Carts {...props }
-                                                                                                                                                                                            />)}/ >
+        <Route path="/browse-items/:id" render={(props) =>
+          (<ItemsID{...props}/>)}/>
 
-                                                                                                                                                                                            <
-                                                                                                                                                                                            Route path = "/checkout"
-                                                                                                                                                                                            render = {
-                                                                                                                                                                                                (props) =>
-                                                                                                                                                                                                ( < Checkout {...props }
-                                                                                                                                                                                                    />)}/ >
+        <Route path="/cart" render={(props) =>
+          (<Carts{...props}/>)}/>
 
+        <Route path="/checkout" render={(props) =>
+          (<Checkout{...props}/>)}/>
 
+        
 
-                                                                                                                                                                                                    <
-                                                                                                                                                                                                    /Switch> <
-                                                                                                                                                                                                    /BrowserRouter>
-                                                                                                                                                                                                );
-                                                                                                                                                                                            }
+      </Switch>
+    </BrowserRouter>
+  );
+}
 
-                                                                                                                                                                                            export default App;
+export default App;

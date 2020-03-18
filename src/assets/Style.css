@@ -647,5 +647,13 @@
 }
 
 .marginitemresto {
-    margin-top: 130px;
+    margin-top: 130px !important;
+}
+
+.marginallitems {
+    margin-top: 100px;
+}
+
+.itemsbottom {
+    margin-bottom: -30px;
 }

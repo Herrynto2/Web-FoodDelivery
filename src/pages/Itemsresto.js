@@ -1,10 +1,13 @@
 import React from 'react'
 import '../assets/Style.css'
+import { Link } from 'react-router-dom'
 import Navbarsub from '../components/Navbarsub'
 import ListItemResto from '../components/Listitemsresto'
 import Footer from '../components/Footer'
 import axios from 'axios'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 class Itemsresto extends React.Component {
         constructor(props) {
@@ -13,11 +16,9 @@ class Itemsresto extends React.Component {
                 data_items: []
             }
         }
-
         componentDidMount() {
             this.getDataItems()
         }
-
         async getDataItems() {
             await axios.get(`http://localhost:3000/items`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
@@ -33,6 +34,15 @@ class Itemsresto extends React.Component {
         }
 
         render() {
+
+                const style = {
+                    background: 'linear-gradient(45deg, #ffc107 30%, #ffc107 90%)',
+                    color: 'white',
+                    height: 55,
+                    padding: '0 30px',
+                    boxShadow: '0 3px 5px 2px rgb(204, 204, 204)',
+                }
+
                 return ( <
                         div > { /* Navbar */ } <
                         Navbarsub / >
@@ -40,11 +50,22 @@ class Itemsresto extends React.Component {
                         { /* Content Items */ } <
                         div >
                         <
-                        div className = "container" >
+                        div className = "container marginallitems" >
                         <
                         div className = "row" >
                         <
-                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > List Items Restaurant < /h4></div >
+                        div className = "mt-4 text-right" >
+                        <
+                        Link to = '/restaurant-items' > < Fab style = { style }
+                        borderRadius = "25%" >
+                        <
+                        AddIcon / >
+                        <
+                        /Fab></Link >
+
+                        <
+                        /div> <
+                        div className = "col-md-12" > < h4 className = "text-center bold mb-5" > List Items Restaurant < /h4></div >
                         <
                         /div> <
                         div className = "row " > {

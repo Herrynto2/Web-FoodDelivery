@@ -38,7 +38,7 @@ class ListItemResto extends React.Component {
 
     render() {
         return ( <
-            div className = "col-lg-2" >
+            div className = "col-lg-2 itemsbottom" >
             <
             Link to = { `/restaurant-items/${this.props.id}` }
             className = "text-decoration-none" >
