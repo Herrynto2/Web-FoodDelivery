@@ -7,52 +7,38 @@ import cart from '../img/cart.png'
 class ListItemResto extends React.Component {
 
     handleDelete = (e) => {
-        console.log(this.state.username, this.state.password)
         e.preventDefault()
-        const data = {
-                username: this.state.username,
-                password: this.state.password
-            }
-            //Validation username && password
-        if (this.state.username === "" && this.state.password === "") {
-            alert('Username or password connot be empty !')
-        } else {
-            // console.log(data) // to get data fotm username & password
-            axios.post('http://localhost:3000/items/2', { //check to port 3000 from table users that connect to backend
-                    username: this.state.username,
-                    password: this.state.password
-                })
-                .then(res => {
-                    console.log(res) //to get data token 
-                    if (res.status === 200) { // 200 is http code success
-                        try {
-                            localStorage.setItem('token', JSON.stringify(res.data.data.token)) //save token to localstorage
-                                //console.log(this.props)
-                            this.props.history.push('/home') //push home page
-                        } catch (error) {
-                            console.log(error.response)
-                            alert(error.response.msg)
-                        }
+        axios.delete(`http://localhost:3000/items/62`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.success !== false) {
+                    try {
+                        alert('delete items successfully')
+                    } catch (error) {
+                        console.log(error.response)
+                        alert(error.response.msg)
                     }
-                })
-                .catch(err => {
-                    console.log(err)
-                    console.log(err.response)
-                    alert(err.response.data.msg)
-                })
-        }
+                } else {
+                    alert('add items failed')
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                console.log(err.response)
+                alert(err.response.msg)
+            })
     }
 
     render() {
         return ( <
-            div className = "col-lg-3" >
+            div className = "col-lg-2" >
             <
-            Link to = '/restaurant-items/2'
+            Link to = { `/restaurant-items/${this.props.id}` }
             className = "text-decoration-none" >
             <
             div className = "card  text-center carditemresto mb-5" >
             <
-            img src = { Bakso }
+            img src = { process.env.REACT_APP_API_URL + this.props.images }
             className = "card-img-top imgitemresto" / >
             <
             div className = "card-body text-center" >
@@ -63,14 +49,16 @@ class ListItemResto extends React.Component {
             /div> <
             div className = "btn-group text-center" >
             <
-            Link to = { `/items/${this.props.id}` } > < button onClick = { e => this.handleDelete(e) }
+            button onClick = { e => this.handleDelete(e) }
             type = "button"
-            className = "btn btn-danger btndel" > Delete < /button></Link >
+            className = "btn btn-danger btndel" > Delete < /button> <
+            /div> <
+            /div> <
+            /Link>
+
             <
-            /div> <
-            /div> <
-            /Link> <
             /div>
+
         )
     }
 }

@@ -41,7 +41,7 @@ class CategoryFood extends React.Component {
                         { /* Content Items */ } <
                         div >
                         <
-                        div className = "container" >
+                        div className = "container margincontent" >
                         <
                         div className = "row" >
                         <

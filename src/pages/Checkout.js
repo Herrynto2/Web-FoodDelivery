@@ -36,64 +36,44 @@ class Checkout extends React.Component {
 
 
     render() {
-        return ( <
-            div >
-            <
-            Navbarsubuser / >
-            <
-            div className = 'container' >
-            <
-            h4 className = " bold mt-5 mb-5 text-center " > Checkout Item < /h4>
+        return (
+            <div>
+                <Navbarsubuser />
+                <div className='container'>
+                    <h4 className=" bold mt-5 mb-5 text-center ">Checkout Item</h4>
+                  
+                    {/* {this.state.data_items && ( */}
+                        <div className="card-body-link">
+                            <div className="card mb-5 card-profil">
+                                <div className="row no-gutters">
+                                    <div className="row no-gutters">
+                                        <img src={Bakso} className="card-img card-img-detail" alt="..." />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="card-body">
+                                            <h5 className="cart-titles">Rendang</h5>
+                                            <hr />
+                                            <h6 className="cart-resto">Warunk Padang - Bogor</h6>
+                                            <h6 className="cart-price">Rp. 20.000</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <input type="number" class="form-control input-total" min="1" placeholder="total items ..."/>
+                    {/* )} */}
 
-            { /* {this.state.data_items && ( */ } <
-            div className = "card-body-link" >
-            <
-            div className = "card mb-5 card-profil" >
-            <
-            div className = "row no-gutters" >
-            <
-            div className = "row no-gutters" >
-            <
-            img src = { Bakso }
-            className = "card-img card-img-detail"
-            alt = "..." / >
-            <
-            /div> <
-            div className = "col-md-6" >
-            <
-            div className = "card-body" >
-            <
-            h5 className = "cart-titles" > Rendang < /h5> <
-            hr / >
-            <
-            h6 className = "cart-resto" > Warunk Padang - Bogor < /h6> <
-            h6 className = "cart-price" > Rp.20.000 < /h6> <
-            /div> <
-            /div> <
-            /div> <
-            /div> <
-            /div> <
-            input type = "number"
-            class = "form-control input-total"
-            min = "1"
-            placeholder = "total items ..." / > { /* )} */ }
-
-            <
-            div class = "card" >
-            <
-            div class = "card-body" >
-            <
-            div className = "text-checkout bold" > Checkout:
-            <
-            button className = "ml-3 btn btn-danger bold" > Rp.100000 < /button> <
-            /div> <
-            /div> <
-            /div> <
-            /div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div className="text-checkout bold">Checkout  :
+                            <button className="ml-3 btn btn-danger bold">Rp. 100000 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-            <
-            /div>
+            </div>
         )
     }
 }

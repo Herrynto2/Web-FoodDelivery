@@ -20,15 +20,35 @@ import {
 } from 'reactstrap';
 
 class Navbarsub extends React.Component {
-    render() {
+    constructor(props) {
+            super(props)
+            this.toggleNavbar = this.toggleNavbar.bind(this);
+            this.closeNavbar = this.closeNavbar.bind(this);
+            this.state = {
+                collapsed: true
+            };
+        }
+        ////Navbars Togler 
+    toggleNavbar() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    }
 
+    closeNavbar() {
+        if (this.state.collapsed !== true) {
+            this.toggleNavbar();
+        }
+    }
+
+    render() {
         return ( <
             div >
             <
-            div className = "navbarsub" >
+            div className = "navbarsub position" >
             <
             Navbar light expand = "md"
-            className = "p-3 " >
+            className = 'p-3' >
             <
             NavbarBrand className = "ml-5 navbarbrandsub"
             href = "" > < Link to = "home" > < span className = "inline textsubbrand" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand > {
@@ -37,9 +57,11 @@ class Navbarsub extends React.Component {
                                             <Link><img src={search} alt="" width="30px" height="30px" className="cartsub" /></Link>
                                         </form> */
             } <
-            NavbarToggler className = "mr-2" / >
+            NavbarToggler onClick = { this.toggleNavbar }
+            className = "mr-2" / >
             <
-            Collapse navbar className = "collapse navbar-collapse" >
+            Collapse isOpen = {!this.state.collapsed }
+            navbar className = "collapse navbar-collapse" >
             <
             Nav className = "ml-auto mr-5"
             navbar >

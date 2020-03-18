@@ -19,19 +19,18 @@ class Itemsresto extends React.Component {
         }
 
         async getDataItems() {
-            await axios.get("http://localhost:3000/browse-items")
+            await axios.get(`http://localhost:3000/items`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
-                    console.log(res)
+                    console.log(res.data.data)
                     let dataArr = res.data.data
-                    this.setState({ data_items: dataArr })
+                    this.setState({
+                        data_items: dataArr,
+                    })
                 })
                 .catch(err => {
                     console.log(err)
-                    console.log(err.response.data.message)
                 })
         }
-
-
         render() {
                 return ( <
                         div > { /* Navbar */ } <
@@ -44,17 +43,18 @@ class Itemsresto extends React.Component {
                         <
                         div className = "row" >
                         <
-                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > List Items < /h4></div >
+                        div className = "col-md-12" > < h4 className = "text-center bold mt-5 mb-5" > List Items Restaurant < /h4></div >
                         <
                         /div> <
                         div className = "row " > {
                             this.state.data_items.map((val, idx) => ( <
                                     ListItemResto key = { idx }
+                                    images = { val.images }
                                     items = { val.name_item }
                                     restaurant = { val.name_restaurant }
                                     prices = { val.price }
                                     category = { val.category }
-                                    id = { val.id_items }
+                                    id = { val.id_item }
                                     />))} <
                                     /div> <
                                     /div> <

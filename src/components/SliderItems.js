@@ -7,38 +7,36 @@ import Slider3 from '../img/slider3.png'
 
 
 class SliderItems extends React.Component {
-    items = [{
-            src: Slider,
-            altText: 'Slide 1',
-            caption: 'Slide 1',
-            header: 'Slide 1 Header',
-            key: '1'
-        },
-        {
-            src: Slider2,
-            altText: 'Slide 1',
-            caption: 'Slide 1',
-            header: 'Slide 1 Header',
-            key: '1'
-        },
+     items = [
         {
             src: Slider,
             altText: 'Slide 1',
             caption: 'Slide 1',
             header: 'Slide 1 Header',
             key: '1'
-        }
+        },
+         {
+             src: Slider2,
+             altText: 'Slide 1',
+             caption: 'Slide 1',
+             header: 'Slide 1 Header',
+             key: '1'
+         },
+         {
+             src: Slider,
+             altText: 'Slide 1',
+             caption: 'Slide 1',
+             header: 'Slide 1 Header',
+             key: '1'
+         }
     ];
     render() {
-        return ( <
-            div >
-            <
-            div className = "sliders" >
-            <
-            UncontrolledCarousel items = { this.items }
-            /> <
-            /div> <
-            /div>
+        return (
+            <div>
+            <div className="sliders">
+             <UncontrolledCarousel items={this.items}/>
+            </div>
+            </div>
         )
     }
 }

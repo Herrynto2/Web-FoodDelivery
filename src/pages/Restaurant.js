@@ -40,7 +40,7 @@ class Restaurant extends React.Component {
                         <
                         div >
                         <
-                        div className = "container" >
+                        div className = "container margincontent" >
                         <
                         div className = "row" >
                         <

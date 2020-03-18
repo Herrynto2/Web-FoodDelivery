@@ -164,7 +164,7 @@ class Signup extends React.Component {
             <
             button type = "button"
             onClick = { e => this.handleSignup(e) }
-            className = "btn btn-primary mt-4" > Sign Up < /button> <
+            className = "btn-auth btn btn-warning mt-4" > Sign Up < /button> <
             /div> <
             div className = "text-center mt-4" >
             <

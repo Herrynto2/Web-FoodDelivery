@@ -42,6 +42,44 @@ class ItemsID extends React.Component {
                 })
         }
 
+        handleTextComment = (e) => {
+            console.log(e.target.value)
+            this.setState({
+                comment: e.target.value
+            })
+        }
+
+        handleComment = (e) => {
+            e.preventDefault()
+            const data = {
+                comment: this.state.comment
+            }
+            if (this.state.comment === "") {
+                alert('comment still empty!')
+            } else {
+                // console.log(data) // to get data fotm username & password
+                axios.post(`http://localhost:3000/review/58`, { comment: this.state.comment }, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+                    .then(res => {
+                        console.log(res.data) //to get data token 
+                        if (res.data.success !== false) { // 200 is http code success
+                            try {
+                                alert('give comment successfully', res.data)
+                            } catch (error) {
+                                console.log(error.response)
+                                alert(error.response.msg)
+                            }
+                        } else {
+                            alert('give comment failed')
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        console.log(err.response)
+                        alert(err.response.msg)
+                    })
+            }
+        }
+
         render() {
 
                 return ( <
@@ -110,15 +148,22 @@ class ItemsID extends React.Component {
                                     Reviews name = { val.name_user }
                                     review = { val.review }
                                     date = { val.date_created }
-                                    />))}
-
+                                    />))} <
+                                    div className = "row justify-content-center" >
                                     <
-                                    div className = "col-lg-5 justify-content-center text-center" >
+                                    div className = "text-center" > < textarea onChange = { e => this.handleTextComment(e) }
+                                    name = "comment"
+                                    className = "form-comment form-control pl-3"
+                                    rows = "2"
+                                    placeholder = "comment ..." > < /textarea></div >
                                     <
-                                    button className = "btn btn-danger" > Comment < /button> <
-                                    /div>
-
+                                    /div> <
+                                    div className = "col-lg-5 justify-content-center text-center mt-3" >
                                     <
+                                    button type = "button"
+                                    onClick = { e => this.handleComment(e) }
+                                    className = "btn btn-danger" > Comment < /button> <
+                                    /div> <
                                     /TabPanel> <
                                     /Tabs>
 

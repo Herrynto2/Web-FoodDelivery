@@ -25,7 +25,7 @@ const Navbarsub = (props) => {
     return ( <
         div >
         <
-        div className = "navbarsub" >
+        div className = "navbarsub position" >
         <
         Navbar light expand = "md"
         className = "p-3 " >

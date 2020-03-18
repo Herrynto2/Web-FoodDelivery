@@ -16,10 +16,6 @@ class Verify extends React.Component {
             code: e.target.value
         })
     }
-
-
-
-    //When login button click
     handleVerify = (e) => {
         e.preventDefault()
         const data = {

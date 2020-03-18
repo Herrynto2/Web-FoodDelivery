@@ -5,18 +5,14 @@ import Profileusers from '../components/Profileusers'
 import Profilerestos from '../components/Profilesrestos'
 
 class Profile extends React.Component {
-
+   
     render() {
-        return ( <
-            div >
-            <
-            Navbarsubuser / >
-            <
-            Profileusers / >
-            <
-            Profilerestos / >
-            <
-            /div>
+        return (
+        <div>
+            <Navbarsubuser/>
+            <Profileusers/>
+            <Profilerestos/>
+        </div>
         )
     }
 }

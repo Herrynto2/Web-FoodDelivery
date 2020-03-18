@@ -10,13 +10,19 @@
 
 .navbars {
     background-color: transparent;
+    transition: 0.4s
+}
+
+.navbaruser {
+    background-color: rgb(255, 255, 255);
+    transition: 0.4s;
+    box-shadow: 0px 2px 2px rgb(231, 231, 231);
 }
 
 .navbarbrand {
     margin-top: -7px !important;
     font-weight: bold;
     font-size: 40px !important;
-    text-shadow: 2px 2px 2px rgb(34, 34, 34);
 }
 
 .allitems {
@@ -42,6 +48,17 @@
 
 .brandtext {
     color: #ffc107;
+    text-shadow: 2px 2px 2px rgb(34, 34, 34);
+    transition: 0.9s;
+}
+
+.brandtexts {
+    color: #ffc107;
+    transition: 0.9s;
+}
+
+.carts {
+    transition: 0.9s;
 }
 
 .inline {
@@ -52,6 +69,13 @@
     color: white;
     font-weight: bold;
     text-shadow: 2px 2px 2px rgb(34, 34, 34);
+    transition: 0.6s;
+}
+
+.texts {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: 0.6s;
 }
 
 .text:hover {
@@ -64,6 +88,14 @@
     margin-top: -3px;
     border-radius: 20px !important;
     width: 100px !important;
+}
+
+.margincontent {
+    margin-top: 100px;
+}
+
+.margincontent-resto {
+    margin-top: 150px;
 }
 
 .cart:hover {
@@ -193,6 +225,7 @@
 
 .navbarsub {
     box-shadow: 0 2px 3px rgb(231, 229, 229) !important;
+    background-color: white;
 }
 
 .navbarbrandsub {
@@ -303,8 +336,14 @@
 
 /* Restaurant Items */
 
+
+/* .carditemresto {
+    margin-bottom: -1000px !important;
+} */
+
 .btndel {
-    width: 565% !important;
+    width: 686% !important;
+    font-size: 12px !important;
 }
 
 .btnadd {
@@ -313,7 +352,7 @@
 
 @media (min-width: 992px) {
     .btndel {
-        width: 355% !important;
+        width: 270% !important;
     }
     .btnadd {
         width: 460% !important;
@@ -325,18 +364,19 @@
 }
 
 .carditemresto {
-    height: 80%;
+    height: 70%;
 }
 
 .imgitemresto {
     width: 100% !important;
-    height: 56%;
+    height: 45%;
 }
 
 .card-text-resto {
-    font-size: 15px !important;
+    font-size: 13px !important;
     color: black !important;
-    margin-bottom: -2px;
+    margin-bottom: 4px;
+    margin-top: -10px;
 }
 
 .card-resto-category {
@@ -356,8 +396,12 @@
     text-align: center !important;
 }
 
-.card-profile {
-    margin-top: 50px;
+.cards {
+    width: 390px;
+}
+
+.card-gutters {
+    width: 100% !important;
 }
 
 .card-img {
@@ -570,8 +614,9 @@
 }
 
 .card-img-resto {
-    width: 260px !important;
-    height: 200px !important;
+    width: 280px !important;
+    height: 220px !important;
+    margin-right: 20px;
 }
 
 .input-total {
@@ -583,4 +628,16 @@
 
 .btn-edit-item-resto {
     width: 25% !important;
+}
+
+
+/* Input Comment */
+
+.form-comment {
+    border-radius: none !important;
+    width: 800px !important;
+}
+
+.align-comment {
+    text-align: center !important;
 }

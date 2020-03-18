@@ -9,16 +9,21 @@ import Slidersresto from '../components/SliderResto'
 class Homeuser extends React.Component {
 
     render() {
-        return ( <
-            div > { /* NAVBAR */ } <
-            Navbaruser / > { /* JUMBOTRON */ } <
-            Jumbotrons / > { /* SLIDER */ } <
-            Slider / > { /* JOIN US */ } <
-            Joinus / > { /* SliderResto */ } <
-            Slidersresto / > { /* FOOTER */ } <
-            Footer / >
-            <
-            /div>
+        return (
+            <div>
+                { /* NAVBAR */}
+                <Navbaruser/>
+                {/* JUMBOTRON */}
+                <Jumbotrons />
+                {/* SLIDER */}
+                <Slider />
+                {/* JOIN US */}
+                <Joinus />
+                {/* SliderResto */}
+                <Slidersresto />
+                {/* FOOTER */}
+                <Footer />
+            </div>
         )
     }
 }

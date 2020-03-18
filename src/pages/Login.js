@@ -112,14 +112,14 @@ class Login extends React.Component {
             div className = "text-right" >
             <
             Link to = "/forgot-password"
-            className = "text-decoration-none" > < span className = "forgotlink" > forgot the password < /span></Link >
+            className = "text-decoration-none" > < span className = "signuplink forgotlink" > forgot the password < /span></Link >
             <
             /div> <
             div className = "text-center" >
             <
             button onClick = { e => this.handleLogin(e) }
             type = "button"
-            className = "btn btn-primary mt-4" > Login < /button> <
+            className = "btn-auth btn btn-warning mt-4" > Login < /button> <
             /div> <
             div className = "text-center mt-4" >
             <

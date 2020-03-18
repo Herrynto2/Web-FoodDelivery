@@ -1,8 +1,38 @@
 import React from 'react';
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import resto from '../img/resto2.jpg'
 
 class Profilerestos extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            data_profile: {}
+        }
+    }
+
+    componentDidMount() {
+        this.getDataResto()
+    }
+
+    async getDataResto() {
+        // await axios.get("http://localhost:3000/detail-items/" + this.props.match.params.id)
+        console.log(window.localStorage.getItem('token'))
+        await axios.get(`http://localhost:3000/restaurant`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+            .then(res => {
+                console.log(res)
+                console.log(res.data.data[0])
+                let dataArr = res.data.data[0]
+                this.setState({
+                    data_profile: dataArr,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
     render() {
         return ( <
             div >
@@ -18,7 +48,7 @@ class Profilerestos extends React.Component {
             <
             div className = "row no-gutters" >
             <
-            img src = { resto }
+            img src = { process.env.REACT_APP_API_URL + this.state.data_profile.logo }
             className = "card-img card-img-profile" / >
             <
             /div> <
@@ -26,14 +56,13 @@ class Profilerestos extends React.Component {
             <
             div className = "card-body " >
             <
-            h5 className = "card-title" > Solaria < /h5> <
+            h5 className = "card-title" > { this.state.data_profile.name_restaurant } < /h5> <
             hr / >
             <
             p className = "card-text" > < small className = "text-muted" > Last updated 3 mins ago < /small></p >
             <
-            p className = "card-text text-muted" > Description Lorem ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit.Recusandae, dignissimos!dolor sit amet consectetur adipisicing elit.Praesentium, ut. < /p> <
-            p className = "card-text text-muted mt-5" > Web Developer < /p> <
-            h5 className = "card-text text-muted" > Depok < /h5>
+            p className = "card-text text-muted mb-5" > { this.state.data_profile.description } < /p> <
+            h5 className = "card-text text-muted" > { this.state.data_profile.location } < /h5>
 
             <
             /div> <

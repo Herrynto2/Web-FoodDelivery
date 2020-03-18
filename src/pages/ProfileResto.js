@@ -1,9 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Gua from '../img/resto2.jpg'
+import axios from 'axios'
 import Navbarsubuser from '../components/Navbarsubuser'
 
 class Profilerestaurant extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            data_profile: {},
+            name: ''
+        }
+    }
+
+
+    componentDidMount() {
+        this.getDataResto()
+    }
+    async getDataResto() {
+        await axios.get(`http://localhost:3000/restaurant`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+            .then(res => {
+                console.log(res.data.data[0])
+                let dataArr = res.data.data[0]
+                this.setState({
+                    data_profile: dataArr
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
     render() {
         return ( <
             div >
@@ -29,7 +56,7 @@ class Profilerestaurant extends React.Component {
             Link to = "/items" > < button class = " btnitems btn btn-warning my-2 my-sm-0"
             type = "submit" > Items < /button></Link >
             <
-            img src = { Gua }
+            img src = { process.env.REACT_APP_API_URL + this.state.data_profile.logo }
             className = "sizeuserprofile mb-3 mt-4" / >
             <
             input type = "file"
@@ -45,48 +72,38 @@ class Profilerestaurant extends React.Component {
             label
             for = "exampleFormControlInput1"
             className = " sml" > Restaurant < /label> <
+            input name = "name"
+            type = "text"
+            className = "form-control"
+            id = "exampleFormControlInput1"
+            value = { this.state.data_profile.name_restaurant }
+            /> <
+            label
+            for = "exampleFormControlInput1"
+            className = "mt-2 sml" > Owner < /label> <
             input type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = "restaurant ..." / >
-            <
+            value = { this.state.data_profile.created_by }
+            /> <
             label
             for = "exampleFormControlInput1"
             className = "mt-2 sml" > Description < /label> <
             input type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = "description ..." / >
-            <
-            label
-            for = "exampleFormControlInput1"
-            className = "mt-2 sml" > Work < /label> <
-            input type = "text"
-            className = "form-control"
-            id = "exampleFormControlInput1"
-            placeholder = "created by ..." / >
-            <
-            label
-            for = "exampleFormControlInput1"
-            className = "mt-2 sml" > Description < /label> <
-            input type = "text"
-            className = "form-control"
-            id = "exampleFormControlInput1"
-            placeholder = "description ..." / >
-            <
+            value = { this.state.data_profile.description }
+            /> <
             label
             for = "exampleFormControlInput1"
             className = "mt-2 sml" > Location < /label> <
             input type = "text"
             className = "form-control mb-4"
             id = "exampleFormControlInput1"
-            placeholder = "location ..." / >
-            <
+            value = { this.state.data_profile.location }
+            /> <
             button class = "btn btn-warning my-2 my-sm-0"
-            type = "submit" > Edit < /button>
-
-
-            <
+            type = "submit" > Edit < /button> <
             /div> <
             /div> <
             /div> <

@@ -43,9 +43,9 @@ class RestaurantID extends React.Component {
                         <
                         Navbarsubuser / >
                         <
-                        div className = 'container' >
+                        div className = 'container margincontent-resto' >
                         <
-                        h4 className = " bold mt-5 text-center" > Restaurant < /h4> {
+                        h4 className = " bold mt-5 text-center mb-5" > Restaurant < /h4> {
                             this.state.data_resto && ( <
                                 div className = "card-body-link" >
                                 <
