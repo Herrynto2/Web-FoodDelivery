@@ -46,8 +46,7 @@ class ListItemRestoGuest extends React.Component {
             <
             div className = "card-body text-center" >
             <
-            img onClick = { e => this.handleAddToCart(this.props.id) }
-            src = { cart }
+            img src = { cart }
             alt = ""
             className = "imgcarts" / >
             <

@@ -108,19 +108,14 @@ class Checkout extends React.Component {
                     <
                     h6 className = "cart-resto" > { this.state.data_carts.name_restaurant } - { this.state.data_carts.location } < /h6> <
                     p className = "text-muted" > { this.state.data_carts.description } < /p> <
-                    h6 className = "cart-price" > Rp. { this.state.data_carts.price } < /h6> <
+                    h6 className = "cart-price" > Rp. { this.state.data_carts.price } < span className = "text-" > /item</span > < /h6> <
                     /div> <
                     /div> <
                     /div> <
                     /div> <
                     /div>
                 )
-            } <
-            input onChange = { e => this.handleValue(e) }
-            type = "number"
-            class = "form-control input-total"
-            min = "1"
-            placeholder = "total items ..." / >
+            } { /* <input onChange={e => this.handleValue(e)} type="number" class="form-control input-total" min="1" placeholder="total items ..."/> */ }
 
             <
             div class = "card" >

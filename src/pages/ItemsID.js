@@ -8,6 +8,8 @@ import Footer from '../components/Footer'
 import Reviews from '../components/Reviews'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Modal } from 'react-bootstrap'
+import Default from '../img/default.png'
 
 class ItemsID extends React.Component {
         constructor(props) {
@@ -15,7 +17,9 @@ class ItemsID extends React.Component {
             this.state = {
                 data_items: null,
                 data_review: [],
-                review: ''
+                review: '',
+                total_item: '',
+                show: false
             }
         }
 
@@ -43,6 +47,12 @@ class ItemsID extends React.Component {
             console.log(e.target.value)
             this.setState({
                 review: e.target.value
+            })
+        }
+        handleValue = (e) => {
+            console.log(e.target.value)
+            this.setState({
+                total_item: e.target.value
             })
         }
 
@@ -80,32 +90,43 @@ class ItemsID extends React.Component {
 
         ////Add To Cart
         handleAddToCart = async(e) => {
+            const data = {
+                total_item: this.state.total_item
+            }
             const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
-            await axios.post(`${process.env.REACT_APP_API_URL}/carts/${this.props.match.params.id}`, {}, {
-                    headers: {
-                        Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
-                    }
-                })
-                .then(res => {
-                    if (res.data.success !== false) {
-                        try {
-                            alerts.fire({ icon: 'success', text: 'Save items successfully' })
-                        } catch (error) {
-                            console.log(error.response)
-                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
+
+            if (this.state.total_item === "") {
+                alerts.fire({ icon: 'error', text: 'value still empty' })
+            } else {
+                await axios.post(`${process.env.REACT_APP_API_URL}/carts/${this.props.match.params.id}`, data, {
+                        headers: {
+                            Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
                         }
-                    } else {
-                        alerts.fire({ icon: 'error', title: 'Oops...', text: 'Failed to save items' })
-                    }
-                })
-                .catch(err => {
-                    console.log({ err })
-                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
-                })
+                    })
+                    .then(res => {
+                        if (res.data.success !== false) {
+                            try {
+                                alerts.fire({ icon: 'success', text: 'Save items successfully' })
+                            } catch (error) {
+                                console.log(error.response)
+                                alerts.fire({ icon: 'error', text: `${error.response.msg}` })
+                            }
+                        } else {
+                            alerts.fire({ icon: 'error', title: 'Oops...', text: 'Failed to save items' })
+                        }
+                    })
+                    .catch(err => {
+                        console.log({ err })
+                        alerts.fire({ icon: 'error', text: `${err.response.msg}` })
+                    })
+            }
+        }
+
+        handleModal() {
+            this.setState({ show: !this.state.show })
         }
 
         render() {
-
                 return ( <
                         div >
                         <
@@ -147,7 +168,8 @@ class ItemsID extends React.Component {
                                 /div>
                             )
                         } <
-                        button onClick = { e => this.handleAddToCart(e) }
+                        button onClick = {
+                            () => { this.handleModal() } }
                         type = "button"
                         className = "btn btn-warning plus marginplus" > Cart < /button> <
                         /div>
@@ -194,7 +216,52 @@ class ItemsID extends React.Component {
                                     /div> <
                                     /TabPanel> <
                                     /Tabs> <
-                                    /div> <
+                                    /div> { /* Add Items Hide*/ } {
+                                        this.state.data_items && ( <
+                                            Modal centered show = { this.state.show }
+                                            onHide = {
+                                                () => this.handleModal() } >
+                                            <
+                                            Modal.Header closeButton > < span className = "bold text-muted" > { this.state.data_items.name_restaurant } < /span></Modal.Header >
+                                            <
+                                            Modal.Body className = "text-center" >
+                                            <
+                                            div class = "card mb-3" >
+                                            <
+                                            div class = "row no-gutters" >
+                                            <
+                                            div class = "col-md-4" >
+                                            <
+                                            img src = { process.env.REACT_APP_API_URL + this.state.data_items.images }
+                                            className = "imgshapes" / >
+                                            <
+                                            /div> <
+                                            div class = "col-md-8 text-left" >
+                                            <
+                                            div class = "card-body card-bodies" >
+                                            <
+                                            h6 className = "cart-prices" > Rp. { this.state.data_items.price } < span > /item</span > < /h6>
+
+                                            <
+                                            input type = "number"
+                                            onChange = { e => this.handleValue(e) }
+                                            name = "value"
+                                            className = "cartvalue form-control"
+                                            min = "1"
+                                            placeholder = "add items..." / >
+                                            <
+                                            div className = "valuealign" > < button onClick = { e => this.handleAddToCart(e) }
+                                            type = "button"
+                                            className = "btn-carts btn-auth btn btn-warning mt-3" > Save < /button></div >
+                                            <
+                                            /div> <
+                                            /div> <
+                                            /div> <
+                                            /div> <
+                                            /Modal.Body> <
+                                            /Modal>
+                                        )
+                                    } { /* Footer */ } <
                                     Footer / >
                                     <
                                     /div>
