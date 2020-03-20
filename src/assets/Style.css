@@ -257,12 +257,42 @@
 .card-text {
     margin-bottom: 0px !important;
     color: black !important;
+    font-size: 16px !important;
+}
+
+.card-texts {
+    margin-bottom: 0px !important;
+    color: black !important;
+    font-size: 17px;
 }
 
 .textcolor {
     color: #ffc107 !important;
     font-weight: 700;
+    font-size: 20px;
     margin-top: 10px !important;
+}
+
+.textcolors {
+    color: #ffc107 !important;
+    font-weight: 700;
+    margin-top: 10px !important;
+    margin-bottom: -5px;
+    font-size: 22px;
+}
+
+.value-cart {
+    color: white;
+    font-weight: 500;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #dc3545;
+    box-shadow: 1px 1px 2px rgb(99, 99, 99);
+    position: absolute;
+    top: -20px;
+    left: -20px;
 }
 
 .card-resto {
@@ -281,15 +311,37 @@
 } */
 
 .imgcart {
-    width: 40px;
-    height: 30px;
+    width: 45px;
+    height: 40px;
     margin-left: -20px;
     border-radius: 0 !important;
     margin-bottom: 20px !important;
-    filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
+    margin: 10px;
+    background-color: #ffc107;
+    border-radius: 100%;
+    padding: 8px 12px 10px 8px;
+    border-radius: 100% !important;
+}
+
+.imgcarts {
+    width: 45px;
+    height: 40px;
+    margin-left: -20px;
+    border-radius: 0 !important;
+    margin-bottom: 20px !important;
+    margin: 10px;
+    margin-top: -10px;
+    background-color: #ffc107;
+    border-radius: 100%;
+    padding: 8px 12px 10px 8px;
+    border-radius: 100% !important;
 }
 
 .imgcart:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.imgcarts:hover {
     transform: scale(1.2, 1.2);
 }
 
@@ -336,11 +388,6 @@
 
 /* Restaurant Items */
 
-
-/* .carditemresto {
-    margin-bottom: -1000px !important;
-} */
-
 .btndel {
     width: 686% !important;
     font-size: 12px !important;
@@ -364,23 +411,44 @@
 }
 
 .carditemresto {
-    height: 70%;
+    height: 80%;
+}
+
+.carditemrestodetail {
+    height: 83%;
+}
+
+.carditemrestodetail:hover {
+    transform: scale(1.03, 1.03);
+}
+
+.carditemrestos:hover {
+    transform: scale(1.03, 1.03);
+}
+
+.carditemrestos {
+    height: 100%;
 }
 
 .imgitemresto {
     width: 100% !important;
-    height: 45%;
+    height: 53%;
+}
+
+.imgitemrestos {
+    width: 100% !important;
+    height: 47%;
 }
 
 .card-text-resto {
-    font-size: 13px !important;
+    font-size: 15px !important;
     color: black !important;
     margin-bottom: 4px;
     margin-top: -10px;
 }
 
 .card-resto-category {
-    font-size: 13px !important;
+    font-size: 15px !important;
     color: black !important;
     font-weight: 700;
 }
@@ -457,6 +525,7 @@
 .tittleuserprofile {
     font-weight: 700;
     color: rgb(90, 90, 90);
+    margin-top: 80px;
 }
 
 .sml {
@@ -656,4 +725,91 @@
 
 .itemsbottom {
     margin-bottom: -30px;
+    box-shadow: rgb(204, 204, 204);
+}
+
+.marginadditems {
+    margin-top: 150px;
+}
+
+.imgshape {
+    width: 260px;
+    height: 140px;
+    border-radius: 30px;
+    padding: 2px;
+}
+
+.inputadditems {
+    width: 350px;
+    font-size: 10px;
+}
+
+.margincart {
+    margin-top: 130px;
+}
+
+.mergintitleresto {
+    margin-bottom: -100px;
+}
+
+.marginpaginat {
+    margin-top: 100px;
+}
+
+.btnmodal {
+    border-radius: 5px !important;
+}
+
+.reviewer {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: -6px;
+}
+
+.reviewerComn {
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.reviewer-guest {
+    font-size: 20px;
+}
+
+.datereview {
+    margin-top: -13px !important;
+    margin-bottom: -2px;
+    font-size: 12px;
+}
+
+.daterev {
+    margin-top: -10000px !important;
+    margin-bottom: 2px !important;
+    font-size: 12px;
+}
+
+.trash {
+    background-image: url('../img/trash.png') !important;
+    width: 19%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+
+.trash:hover {
+    transform: scale(1.02, 1.02);
+    filter: drop-shadow(2px, 2px, 2px rgb(216, 215, 215))
+}
+
+.alertbg {
+    width: 600px;
+    background-color: rgb(238, 236, 236) !important;
+    border: none !important;
+}
+
+.handleImages {
+    width: 250px !important;
+    height: 20px !important;
 }

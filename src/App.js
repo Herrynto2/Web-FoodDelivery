@@ -15,8 +15,8 @@ import CreateRestaurant from '../src/pages/Createresto'
 import Profile from '../src/pages/Profile'
 import Profileuser from '../src/pages/ProfileUser'
 import Profileresto from '../src/pages/ProfileResto'
-import Carts from '../src/pages/cart'
-import Checkout from '../src/pages/Checkout'
+import CartsItem from '../src/pages/Carts'
+import CartID from '../src/pages/Checkout'
 import Itemsresto from '../src/pages/Itemsresto'
 import ItemsRestoDetail from '../src/pages/Itemsrestodetail'
 import ItemsRestoAdd from '../src/pages/Itemsrestoadd'
@@ -26,6 +26,7 @@ import RestaurantID from '../src/pages/RestaurantID'
 import FoodID from '../src/pages/ItemsID2'
 import CategoryDrink from '../src/pages/Category-Drink'
 import CategoryFood from '../src/pages/Category-Food'
+import Modals from '../src/pages/Modals'
 
 function App() {
   return (
@@ -88,7 +89,7 @@ function App() {
         <Route path="/items" render={(props) =>
           (<Itemsresto{...props}/>)}/>
 
-        <Route path="/restaurant-items" render={(props) =>
+        <Route path="/add-items" render={(props) =>
           (<ItemsRestoAdd{...props}/>)}/>
 
         <Route path="/restaurant-items/:id" render={(props) =>
@@ -98,10 +99,13 @@ function App() {
           (<ItemsID{...props}/>)}/>
 
         <Route path="/cart" render={(props) =>
-          (<Carts{...props}/>)}/>
+          (<CartsItem{...props}/>)}/>
 
-        <Route path="/checkout" render={(props) =>
-          (<Checkout{...props}/>)}/>
+        <Route path="/carts/:id" render={(props) =>
+          (<CartID{...props}/>)}/>
+
+        <Route path="/modals" render={(props) =>
+          (<Modals{...props}/>)}/>
 
         
 

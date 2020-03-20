@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/Login.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 class Signup extends React.Component {
 
@@ -65,39 +66,33 @@ class Signup extends React.Component {
         console.log(this.state.username, this.state.password)
         e.preventDefault()
         const data = {
-                name: this.state.name,
-                username: this.state.username,
-                password: this.state.password,
-                email: this.state.email,
-                gender: this.state.gender,
-                work: this.state.work,
-                address: this.state.address
-            }
-            //Validation username && password
+            name: this.state.name,
+            username: this.state.username,
+            password: this.state.password,
+            email: this.state.email,
+            gender: this.state.gender,
+            work: this.state.work,
+            address: this.state.address
+        }
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
         if (this.state.username === "" && this.state.password === "") {
-            alert('Username or password connot be empty !')
+            alerts.fire({ icon: 'error', text: 'Username or password cannot be empty' })
         } else {
-            // console.log(data) // to get data fotm username & password
             axios.post('http://localhost:3000/register', data)
                 .then(res => {
-                    console.log(res.data.Verification_codes) //to get data token 
-                    if (res.status === 200) { // 200 is http code success
-                        axios.patch('http://localhost:3000/verify', res.data.Verification_codes)
-                            .then(res => {
-                                alert('register successfully')
-                            })
+                    console.log(res.data.Verification_codes)
+                    if (res.status === 200) {
                         try {
-                            this.props.history.push('/verify') //push home page
+                            alerts.fire('registration successful')
+                            this.props.history.push('/verify')
                         } catch (error) {
-                            console.log(error.response)
                             alert(error.response.msg)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
                         }
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                    console.log(err.response)
-                    alert(err.response.data.msg)
+                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
                 })
         }
     }

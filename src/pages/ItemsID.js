@@ -7,27 +7,26 @@ import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
 import Reviews from '../components/Reviews'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 class ItemsID extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
-                    data_items: null,
-                    data_review: [],
-                    review: ''
-                }
-                // this.getDataItems = this.getDataItems.bind(this)
+                data_items: null,
+                data_review: [],
+                review: ''
+            }
         }
 
         componentDidMount() {
-            console.log(this.props.match.params.id)
             this.getDataItems(this.props.match.params.id)
         }
 
         async getDataItems(id) {
-            // await axios.get("http://localhost:3000/detail-items/" + this.props.match.params.id)
             await axios.get(`http://localhost:3000/detail-items/${id}`)
                 .then(res => {
+                    console.log(res.data)
                     let dataArr = res.data.data
                     let dataArr2 = res.data.review
                     this.setState({
@@ -51,8 +50,9 @@ class ItemsID extends React.Component {
             const data = {
                 review: this.state.review
             }
+            const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
             if (this.state.review === "") {
-                alert('value still empty!')
+                alerts.fire({ icon: 'error', text: 'value still empty' })
             } else {
                 await axios.post(`${process.env.REACT_APP_API_URL}/review/${this.props.match.params.id}`, data, {
                         headers: {
@@ -60,23 +60,48 @@ class ItemsID extends React.Component {
                         }
                     })
                     .then(res => {
-                        console.log(res)
                         if (res.data.success !== false) {
                             try {
-                                alert('add comment successfully')
+                                alerts.fire({ icon: 'success', text: 'Comment successful' })
                             } catch (error) {
                                 console.log(error.response)
-                                alert(error.response.msg)
+                                alerts.fire({ icon: 'error', text: `${error.response.msg}` })
                             }
                         } else {
-                            alert('add comment failed')
+                            alerts.fire({ icon: 'error', title: 'Oops...', text: 'Failed post comment' })
                         }
                     })
                     .catch(err => {
                         console.log({ err })
-                        alert(err.response.msg)
+                        alerts.fire({ icon: 'error', text: `${err.response.msg}` })
                     })
             }
+        }
+
+        ////Add To Cart
+        handleAddToCart = async(e) => {
+            const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
+            await axios.post(`${process.env.REACT_APP_API_URL}/carts/${this.props.match.params.id}`, {}, {
+                    headers: {
+                        Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
+                    }
+                })
+                .then(res => {
+                    if (res.data.success !== false) {
+                        try {
+                            alerts.fire({ icon: 'success', text: 'Save items successfully' })
+                        } catch (error) {
+                            console.log(error.response)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
+                        }
+                    } else {
+                        alerts.fire({ icon: 'error', title: 'Oops...', text: 'Failed to save items' })
+                    }
+                })
+                .catch(err => {
+                    console.log({ err })
+                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
+                })
         }
 
         render() {
@@ -113,6 +138,7 @@ class ItemsID extends React.Component {
                                 hr / >
                                 <
                                 h6 className = "cart-resto" > { this.state.data_items.name_item } - { this.state.data_items.location } < /h6> <
+                                p className = "text-muted" > { this.state.data_items.desciption } < /p> <
                                 h6 className = "cart-price" > Rp. { this.state.data_items.price } < /h6> <
                                 /div> <
                                 /div> <
@@ -121,8 +147,9 @@ class ItemsID extends React.Component {
                                 /div>
                             )
                         } <
-                        button className = "btn btn-warning block marginbuy" > Buy < /button> <
-                        button className = "btn btn-warning plus marginplus" > + < /button> <
+                        button onClick = { e => this.handleAddToCart(e) }
+                        type = "button"
+                        className = "btn btn-warning plus marginplus" > Cart < /button> <
                         /div>
 
                         <
@@ -145,8 +172,10 @@ class ItemsID extends React.Component {
                         TabPanel > {
                             this.state.data_review.map((val, idx) => ( <
                                     Reviews name = { val.name_user }
+                                    date_created = { val.date_created }
                                     review = { val.review }
                                     date = { val.date_created }
+                                    images = { process.env.REACT_APP_API_URL + val.images }
                                     />))} <
                                     div className = "row justify-content-center" >
                                     <

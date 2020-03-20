@@ -59,7 +59,7 @@ class Profilerestos extends React.Component {
             h5 className = "card-title" > { this.state.data_profile.name_restaurant } < /h5> <
             hr / >
             <
-            p className = "card-text" > < small className = "text-muted" > Last updated 3 mins ago < /small></p >
+            p className = "card-text" > < small className = "text-muted" > Last updated { this.state.data_profile.date_updated } < /small></p >
             <
             p className = "card-text text-muted mb-5" > { this.state.data_profile.description } < /p> <
             h5 className = "card-text text-muted" > { this.state.data_profile.location } < /h5>

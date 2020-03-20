@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Gua from '../img/gua.jpg'
 import axios from 'axios'
 import Navbarsubuser from '../components/Navbarsubuser'
+import Swal from 'sweetalert2'
 
 class Profileuser extends React.Component {
 
@@ -62,27 +61,28 @@ class Profileuser extends React.Component {
         const data = {
             saldo: this.state.saldo
         }
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
         if (this.state.saldo === "") {
-            alert('Please input the value!')
+            alerts.fire({ icon: 'error', text: 'Please input the value! ' })
         } else {
             console.log(data)
             axios.patch(`http://localhost:3000/topup`, data, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
-                    console.log(this.state.balance) //to get data token 
-                    if (res.data.success !== false) { // 200 is http code success
+                    if (res.data.success !== false) {
                         try {
-                            alert('topup successfully', res.data)
+                            alerts.fire({ icon: 'success', text: 'topup successfully' })
                             this.props.history.push('/userprofile') //push home page
                         } catch (error) {
-                            alert(error.response.msg)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
                         }
                     } else {
-                        alert("please input value")
+                        alerts.fire({ icon: 'error', text: 'please input value' })
+
                     }
                 })
                 .catch(err => {
-                    console.log('kkkk', err.response)
-                    alert(err.response.msg)
+                    console.log(err.response)
+                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
                 })
         }
     }
@@ -133,28 +133,27 @@ class Profileuser extends React.Component {
         data.append('address', this.state.address)
         data.append('work', this.state.work)
         data.append('images', this.state.images)
-
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
         if (this.state.email === "") {
-            alert('Please input the value!')
+            alerts.fire({ icon: 'error', text: 'Text still empty! ' })
         } else {
             axios.patch(`http://localhost:3000/profile`, data, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
                     console.log(res.data)
                     if (res.data.success !== false) {
                         try {
-                            alert('update user successfully', res.data)
+                            alerts.fire({ icon: 'success', text: 'update user successfully' })
                             this.props.history.push('/userprofile')
                         } catch (error) {
-                            alert(error.response.msg)
+                            alerts.fire({ icon: 'error', text: 'Failed to update' })
                         }
                     } else {
-                        alert("failed to update", res.data)
-
+                        alerts.fire({ icon: 'error', title: 'Oops', text: 'Failed to update' })
                     }
                 })
                 .catch(err => {
-                    console.log('key', err.response)
                     alert(err.response.msg)
+                    alerts.fire({ icon: 'error', text: 'update user successfully ' })
                 })
         }
     }

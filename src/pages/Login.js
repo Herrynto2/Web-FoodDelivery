@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/Login.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 class Login extends React.Component {
 
@@ -35,14 +36,14 @@ class Login extends React.Component {
         console.log(this.state.username, this.state.password)
         e.preventDefault()
         const data = {
-                username: this.state.username,
-                password: this.state.password
-            }
+            username: this.state.username,
+            password: this.state.password
+        }
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
             //Validation username && password
         if (this.state.username === "" && this.state.password === "") {
-            alert('Username or password connot be empty !')
+            alerts.fire({ icon: 'error', text: 'Data connot be empty' })
         } else {
-            // console.log(data) // to get data fotm username & password
             axios.post('http://localhost:3000/login', { //check to port 3000 from table users that connect to backend
                     username: this.state.username,
                     password: this.state.password
@@ -52,18 +53,16 @@ class Login extends React.Component {
                     if (res.status === 200) { // 200 is http code success
                         try {
                             localStorage.setItem('token', JSON.stringify(res.data.data.token)) //save token to localstorage
-                                //console.log(this.props)
                             this.props.history.push('/home') //push home page
                         } catch (error) {
-                            console.log(error.response)
-                            alert(error.response.msg)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
                         }
                     }
                 })
                 .catch(err => {
                     console.log(err)
                     console.log(err.response)
-                    alert(err.response.data.msg)
+                    alerts.fire({ icon: 'error', title: 'Oops...', text: 'Username or password wrong' })
                 })
         }
     }

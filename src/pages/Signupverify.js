@@ -3,6 +3,7 @@ import '../assets/Login.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../assets/Login.css'
+import Swal from 'sweetalert2'
 
 class Verify extends React.Component {
     constructor(props) {
@@ -21,27 +22,24 @@ class Verify extends React.Component {
         const data = {
             code: this.state.code
         }
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
         if (this.state.code === "") {
-            alert('code still empty!')
+            alerts.fire({ icon: 'error', text: 'Code cannot be empty' })
         } else {
-            // console.log(data) // to get data fotm username & password
             axios.patch(`http://localhost:3000/verify?code=${data.code}`)
                 .then(res => {
-                    console.log(res.data) //to get data token 
-                    if (res.status === 200) { // 200 is http code success
+                    if (res.status === 200) {
                         try {
-                            alert('verification successfully', res.data)
-                            this.props.history.push('/login') //push home page
+                            alerts.fire({ icon: 'success', text: 'Verification successful' })
+                            this.props.history.push('/login')
                         } catch (error) {
-                            console.log(error.response)
-                            alert(error.response.msg)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
                         }
                     }
                 })
                 .catch(err => {
                     console.log(err)
-                    console.log(err.response)
-                    alert(err.response.msg)
+                    alerts.fire({ icon: 'error', title: 'Oops...', text: 'Incorrect verification code' })
                 })
         }
     }
@@ -73,7 +71,7 @@ class Verify extends React.Component {
             <
             div className = "btnverify" > < button type = "button"
             onClick = { e => this.handleVerify(e) }
-            className = "btn btn-primary mt-4" > Verify < /button></div >
+            className = "btn-auth btn btn-warning mt-4" > Verify < /button></div >
             <
             Link to = "/login"
             className = "text-decoration-none" > < span className = "signuplink" > Back to login < /span></Link >

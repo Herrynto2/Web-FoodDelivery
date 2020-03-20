@@ -31,7 +31,7 @@ const Navbarsub = (props) => {
         className = "p-3 " >
         <
         NavbarBrand className = "ml-5 navbarbrandsub"
-        href = "" > < Link to = "home" > < span className = "inline textsubbrand" > axel < /span><span className="inline brandtext">cious</span > < /Link></NavbarBrand >
+        href = "" > < Link to = "home" > < span className = "inline textsubbrand" > axel < /span><span className="inline brandtexts">cious</span > < /Link></NavbarBrand >
         <
         NavbarToggler onClick = { toggleNavbar }
         className = "mr-2" / >

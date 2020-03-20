@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Bakso from '../img/resto1.jpg'
 import Navbarsubuser from '../components/Navbarsubuser'
 import Footer from '../components/Footer'
 import axios from 'axios'
@@ -45,7 +43,7 @@ class RestaurantID extends React.Component {
                         <
                         div className = 'container margincontent-resto' >
                         <
-                        h4 className = " bold mt-5 text-center mb-5" > Restaurant < /h4> {
+                        h4 className = " bold mt-5 text-center mergintitleresto" > Restaurant < /h4> {
                             this.state.data_resto && ( <
                                 div className = "card-body-link" >
                                 <

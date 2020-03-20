@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Navbarsubuser from '../components/Navbarsubuser'
+import Swal from 'sweetalert2'
 
 class Profilerestaurant extends React.Component {
     constructor(props) {
@@ -74,28 +75,27 @@ class Profilerestaurant extends React.Component {
         data.append('location', this.state.location)
         data.append('description', this.state.description)
         data.append('created_by', this.state.created_by)
-
-
-        if (this.state.name === "") {
-            alert('Please input the value!')
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
+        if (this.state.name_restaurant === "") {
+            alerts.fire({ icon: 'error', text: 'Text still empty! ' })
         } else {
             axios.patch(`http://localhost:3000/restaurant`, data, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                 .then(res => {
                     console.log(res.data)
                     if (res.data.success !== false) {
                         try {
-                            alert('update restaurant successfully', res.data)
+                            alerts.fire({ icon: 'success', text: 'update restaurant successfully ' })
                             this.props.history.push('/restaurantprofile')
                         } catch (error) {
                             alert(error.response.msg)
                         }
                     } else {
-                        alert("failed to update", res.data)
+                        alerts.fire({ icon: 'error', title: 'Oops', text: 'failed to update' })
                     }
                 })
                 .catch(err => {
                     console.log('error', err.response)
-                    alert(err.response.msg)
+                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
                 })
         }
     }
