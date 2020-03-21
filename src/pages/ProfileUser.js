@@ -189,7 +189,7 @@ class Profileuser extends React.Component {
             name = "address"
             className = "form-control address"
             rows = "3"
-            placeholder = { this.state.data_profile.address } > < /textarea> <
+            defaultValue = { this.state.data_profile.address } > < /textarea> <
             /div> <
             div className = "col-lg-1" > < /div> <
             div className = "col-lg-6" >
@@ -221,7 +221,7 @@ class Profileuser extends React.Component {
             type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.name_user }
+            defaultValue = { this.state.data_profile.name_user }
             disable / >
             <
             label
@@ -232,7 +232,7 @@ class Profileuser extends React.Component {
             name = "email"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.email }
+            defaultValue = { this.state.data_profile.email }
             /> <
             label
             for = "exampleFormControlInput1"
@@ -254,7 +254,7 @@ class Profileuser extends React.Component {
             type = "text"
             className = "form-control mb-4"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.work }
+            defaultValue = { this.state.data_profile.work }
             /> <
             button onClick = { e => this.handleProfile(e) }
             class = "btn btn-warning my-2 my-sm-0"

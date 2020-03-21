@@ -25,12 +25,27 @@ class Itemsresto extends React.Component {
                 price: '',
                 description: '',
                 images: null,
-                total_item: ''
+                total_item: '',
+                onDelete: false
             }
         }
+
         componentDidMount() {
             this.getDataItems()
         }
+
+        componentDidUpdate(prevState, nextState) {
+            if (this.state.onDelete) {
+
+                console.log('text')
+                this.setState({ onDelete: true })
+                this.getDataItems();
+                return;
+            }
+            return null
+        }
+
+
         async getDataItems() {
                 await axios.get(`http://localhost:3000/items`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
                     .then(res => {
@@ -101,7 +116,6 @@ class Itemsresto extends React.Component {
                         }
                     })
                     .catch(err => {
-                        console.log(err)
                         alerts.fire({ icon: 'error', text: `${err.response.msg}` })
                     })
             }
@@ -160,6 +174,7 @@ class Itemsresto extends React.Component {
                                     prices = { val.price }
                                     category = { val.category }
                                     id = { val.id_item }
+                                    setState = { this.setState }
                                     />))} <
                                     /div> <
                                     /div> <

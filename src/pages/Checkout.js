@@ -2,6 +2,7 @@ import React from 'react';
 import Navbarsubuser from '../components/Navbarsubuser'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Modal } from 'react-bootstrap'
 
 class Checkout extends React.Component {
 
@@ -10,15 +11,20 @@ class Checkout extends React.Component {
         this.state = {
             data_carts: null,
             checkout: null,
-            total: ''
+            total_item: 1,
+            show: false
         }
     }
 
     handleValue = (e) => {
         console.log(e.target.value)
         this.setState({
-            total: e.target.value
+            total_item: e.target.value
         })
+    }
+    handleModal() {
+        console.log(true)
+        this.setState({ show: !this.state.show })
     }
 
     componentDidMount() {
@@ -30,6 +36,7 @@ class Checkout extends React.Component {
             .then(res => {
                 console.log(res.data.checkout)
                 let dataArr = res.data.data[0]
+                console.log(res.data.data)
                 let dataArr2 = res.data.checkout
                 this.setState({
                     data_carts: dataArr,
@@ -41,13 +48,14 @@ class Checkout extends React.Component {
             })
     }
 
+
     ////Checkout
     handleCheckout = async(e) => {
         const data = {
-            total: this.state.total
+            total_item: this.state.total_item
         }
         const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
-        if (this.state.total === "" || this.state.total < 1) {
+        if (this.state.total_item < 1) {
             alerts.fire({ icon: 'error', text: 'Please input value minimal 1!' })
         } else {
             await axios.post(`${process.env.REACT_APP_API_URL}/checkout/${this.props.match.params.id}`, data, {
@@ -115,7 +123,7 @@ class Checkout extends React.Component {
                     /div> <
                     /div>
                 )
-            } { /* <input onChange={e => this.handleValue(e)} type="number" class="form-control input-total" min="1" placeholder="total items ..."/> */ }
+            }
 
             <
             div class = "card" >
@@ -124,13 +132,61 @@ class Checkout extends React.Component {
             <
             div className = "text-checkout bold" > Checkout:
             <
-            button onClick = { e => this.handleCheckout(e) }
+            button onClick = {
+                () => { this.handleModal() } }
             className = "ml-3 btn btn-danger bold" > Rp. { this.state.chekout } < /button> <
             /div> <
             /div> <
             /div> <
             /div>
 
+            { /* Add Items Hide*/ } {
+                this.state.data_carts && ( <
+                    Modal centered show = { this.state.show }
+                    onHide = {
+                        () => this.handleModal() } >
+                    <
+                    Modal.Header closeButton > < span className = "bold text-muted" > { this.state.data_carts.name_item } < /span></Modal.Header >
+                    <
+                    Modal.Body className = "text-center" >
+                    <
+                    div class = "card mb-3" >
+                    <
+                    div class = "row no-gutters" >
+                    <
+                    div class = "col-md-4" >
+                    <
+                    img src = { process.env.REACT_APP_API_URL + this.state.data_carts.images }
+                    className = "imgshapes" / >
+                    <
+                    /div> <
+                    div class = "col-md-8 text-left" >
+                    <
+                    div class = "card-body card-bodies" >
+                    <
+                    h6 className = "cart-prices" > Rp. { this.state.data_carts.price } < span > /item</span > < /h6>
+
+                    <
+                    input type = "number"
+                    onChange = { e => this.handleValue(e) }
+                    name = "value"
+                    className = "cartvalue form-control"
+                    min = "1"
+                    placeholder = "input value ..."
+                    defaultValue = { this.state.data_carts.total_item }
+                    /> <
+                    div className = "valuealign" > < button onClick = { e => this.handleCheckout(e) }
+                    type = "button"
+                    className = "btn-carts btn-auth btn btn-danger mt-3" > Checkout < /button></div >
+                    <
+                    /div> <
+                    /div> <
+                    /div> <
+                    /div> <
+                    /Modal.Body> <
+                    /Modal>
+                )
+            }
 
             <
             /div>

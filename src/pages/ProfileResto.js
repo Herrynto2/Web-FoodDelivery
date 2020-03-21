@@ -149,7 +149,7 @@ class Profilerestaurant extends React.Component {
             type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.name_restaurant }
+            defaultValue = { this.state.data_profile.name_restaurant }
             /> <
             label
             for = "exampleFormControlInput1"
@@ -159,7 +159,7 @@ class Profilerestaurant extends React.Component {
             type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.created_by }
+            defaultValue = { this.state.data_profile.created_by }
             /> <
             label
             for = "exampleFormControlInput1"
@@ -169,7 +169,7 @@ class Profilerestaurant extends React.Component {
             type = "text"
             className = "form-control"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.description }
+            defaultValue = { this.state.data_profile.description }
             /> <
             label
             for = "exampleFormControlInput1"
@@ -179,7 +179,7 @@ class Profilerestaurant extends React.Component {
             type = "text"
             className = "form-control mb-4"
             id = "exampleFormControlInput1"
-            placeholder = { this.state.data_profile.location }
+            defaultValue = { this.state.data_profile.location }
             /> <
             button onClick = { e => this.handleEdit(e) }
             class = "btn btn-warning my-2 my-sm-0"

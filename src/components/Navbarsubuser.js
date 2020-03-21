@@ -105,13 +105,13 @@ class Navbarsub extends React.Component {
             NavItem >
             <
             NavLink > < Link to = "/browse-restaurant"
-            className = "ml-3 text-decoration-none"
-            href = "/components/" > < span className = "textsub" > Restaurant < /span></Link > < /NavLink> <
+            className = "text-decoration-none"
+            href = "/components/" > < span className = "textsub mr-3" > Restaurant < /span></Link > < /NavLink> <
             /NavItem> <
             NavItem >
             <
             NavLink > < Link to = "/cart"
-            className = "ml-4 mr-3 margin text-decoration-none cartsub"
+            className = "mr-4 margin text-decoration-none cartsub"
             href = "/components/" > < img src = { cart }
             width = "30px"
             alt = "" / > < /Link> <
@@ -120,7 +120,7 @@ class Navbarsub extends React.Component {
             NavItem >
             <
             NavLink > < Link to = "/profile"
-            className = "ml-4 mr-3 margin text-decoration-none cartsub"
+            className = "mr-4 margin text-decoration-none cartsub"
             href = "/components/" > < img src = { profile }
             width = "30px"
             alt = "" / > < /Link> <
@@ -131,7 +131,7 @@ class Navbarsub extends React.Component {
             NavLink >
             <
             Link to = "/login"
-            className = "ml-3 btnloginsub"
+            className = "btnloginsub"
             href = "/components/" > < button type = "button"
             className = "btnsub btn btn-warning" > Logout < /button></Link >
             <

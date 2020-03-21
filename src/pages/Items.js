@@ -1,25 +1,19 @@
 import React from 'react'
 import '../assets/Style.css'
-import Navbarsub from '../components/Navbarsub'
+// import Navbarsub from '../components/Navbarsub'
+import Navbarsub from '../components/Navbarsubuser'
 import ListItems from '../components/Listitems'
 import Footer from '../components/Footer'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class Items extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
-                data_items: []
+                data_items: [],
+                nextPage: null
             }
-        }
-
-        handleNext = (e) => {
-            console.log(e.target.name, e.target.value)
-            this.setState({
-                password: e.target.value
-            })
         }
 
         componentDidMount() {
@@ -35,7 +29,6 @@ class Items extends React.Component {
                 })
                 .catch(err => {
                     console.log(err)
-                    console.log(err.response.data.message)
                 })
         }
 

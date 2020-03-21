@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbars from '../components/Navbar';
+import Navbaruser from '../components/Navbaruser'
 import Jumbotrons from '../components/Jumbotron'
 import Footer from '../components/Footer'
 import Joinus from '../components/Joinus';
@@ -11,11 +12,10 @@ class Home extends React.Component {
 
     render() {
         return ( < div > { /* NAVBAR */ } <
-            Navbars / > { /* JUMBOTRON */ } <
+            Navbaruser / > { /* JUMBOTRON */ } <
             Jumbotrons / > { /* SLIDER */ } <
             Slider / > { /* JOIN US */ } <
-            Joinus / >
-            skdlk { /* SliderResto */ } <
+            Joinus / > { /* SliderResto */ } <
             Slidersresto / > { /* FOOTER */ } <
             Footer / >
             <

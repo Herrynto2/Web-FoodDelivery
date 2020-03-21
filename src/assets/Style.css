@@ -758,7 +758,6 @@
 
 .inputadditems {
     width: 350px;
-    font-size: 10px;
 }
 
 .margincart {
@@ -827,8 +826,9 @@
 }
 
 .handleImages {
-    width: 250px !important;
-    height: 20px !important;
+    width: 180px !important;
+    font-size: 12px;
+    text-align: left;
 }
 
 .cartvalue {

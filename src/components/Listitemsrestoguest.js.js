@@ -3,33 +3,80 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import cart from '../img/cart.png'
 import Swal from 'sweetalert2'
+import { Modal } from 'react-bootstrap'
 
 class ListItemRestoGuest extends React.Component {
-    handleAddToCart = async(id) => {
-        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
-        await axios.post(`${process.env.REACT_APP_API_URL}/carts/${id}`, {}, {
-                headers: {
-                    Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
-                }
-            })
-            .then(res => {
-                console.log(res.data)
-                if (res.data.success !== false) {
-                    try {
-                        alerts.fire({ icon: 'success', text: 'Save item successfully' })
+    constructor(props) {
+        super()
+        this.state = {
+            visible: false,
+            show: false,
+            data_items: null,
+            total_item: ''
+        }
+        this.handleModal = this.handleModal.bind(this)
+    }
 
-                    } catch (error) {
-                        alerts.fire({ icon: 'error', text: error.response.msg })
-                    }
-                } else {
-                    alerts.fire({ icon: 'error', text: 'Failed to save items!' })
-                }
+
+    async getDataItems(id) {
+        await axios.get(`http://localhost:3000/detail-items/${id}`)
+            .then(res => {
+                console.log(res.data.data)
+                let dataArr = res.data.data
+                this.setState({ data_items: dataArr })
             })
             .catch(err => {
-                console.log({ err })
-                alerts.fire({ icon: 'error', text: err.response.msg })
+                console.log('errors', err)
+                console.log('error', err.response.data.message)
             })
     }
+
+    handleModal(e, id) {
+        e.preventDefault()
+        this.getDataItems(this.props.id)
+        console.log(this.props.id)
+        this.setState({ show: !this.state.show })
+
+    }
+    handleValue = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            total_item: e.target.value
+        })
+    }
+    handleAddToCart = async(e) => {
+        const data = {
+            total_item: this.state.total_item
+        }
+        const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
+
+        if (this.state.total_item === "") {
+            alerts.fire({ icon: 'error', text: 'value still empty' })
+        } else {
+            await axios.post(`${process.env.REACT_APP_API_URL}/carts/${this.props.id}`, data, {
+                    headers: {
+                        Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token'))
+                    }
+                })
+                .then(res => {
+                    if (res.data.success !== false) {
+                        try {
+                            alerts.fire({ icon: 'success', text: 'Save items successfully' })
+                        } catch (error) {
+                            console.log(error.response)
+                            alerts.fire({ icon: 'error', text: `${error.response.msg}` })
+                        }
+                    } else {
+                        alerts.fire({ icon: 'error', title: 'Oops...', text: 'Failed to save items' })
+                    }
+                })
+                .catch(err => {
+                    console.log({ err })
+                    alerts.fire({ icon: 'error', text: `${err.response.msg}` })
+                })
+        }
+    }
+
 
     render() {
         console.log(this.props)
@@ -46,7 +93,9 @@ class ListItemRestoGuest extends React.Component {
             <
             div className = "card-body text-center" >
             <
-            img src = { cart }
+            img onClick = {
+                (e) => { this.handleModal(e) } }
+            src = { cart }
             alt = ""
             className = "imgcarts" / >
             <
@@ -58,7 +107,52 @@ class ListItemRestoGuest extends React.Component {
             <
             /div> <
             /div> <
-            /Link> <
+            /Link> {
+                this.state.data_items && ( <
+                    Modal centered show = { this.state.show }
+                    onHide = {
+                        () => this.setState({ show: false }) } >
+                    <
+                    Modal.Header closeButton > < span className = "bold text-muted" > { this.state.data_items.name_restaurant } < /span></Modal.Header >
+                    <
+                    Modal.Body className = "text-center" >
+                    <
+                    div class = "card mb-3" >
+                    <
+                    div class = "row no-gutters" >
+                    <
+                    div class = "col-md-4" >
+                    <
+                    img src = { process.env.REACT_APP_API_URL + this.state.data_items.images }
+                    className = "imgshapes" / >
+                    <
+                    /div> <
+                    div class = "col-md-8 text-left" >
+                    <
+                    div class = "card-body card-bodies" >
+                    <
+                    h6 className = "cart-prices" > Rp. { this.state.data_items.price } < span className = "peritem" > /item</span > < /h6>
+
+                    <
+                    input type = "number"
+                    onChange = { e => this.handleValue(e) }
+                    name = "value"
+                    className = "cartvalue form-control"
+                    min = "1"
+                    placeholder = "add items..." / >
+                    <
+                    div className = "valuealign" > < button onClick = { e => this.handleAddToCart(e) }
+                    type = "button"
+                    className = "btn-carts btn-auth btn btn-warning mt-3" > Save < /button></div >
+                    <
+                    /div> <
+                    /div> <
+                    /div> <
+                    /div> <
+                    /Modal.Body> <
+                    /Modal>
+                )
+            } <
             /div>
         )
     }

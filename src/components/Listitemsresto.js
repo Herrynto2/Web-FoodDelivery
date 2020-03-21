@@ -4,8 +4,43 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 class ListItemResto extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            onDelete: true
+        }
+    }
 
-    handleDelete = async(id) => {
+    componentDidMount() {
+        this.getDataItems()
+    }
+
+    // componentDidUpdate(prev, next) {
+    //     if (!this.state.onDelete) {
+    //         this.getDataItems()
+    //         console.log('text')
+    //         this.setState({onDelete:false})
+    //     }
+    // }
+
+
+    async getDataItems() {
+        await axios.get(`http://localhost:3000/items`, { headers: { Authorization: 'Bearer ' + JSON.parse(window.localStorage.getItem('token')) } })
+            .then(res => {
+                console.log('Refresh')
+                let dataArr = res.data.data
+                this.setState({
+                    data_items: dataArr,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
+    handleDelete = async(e, id) => {
+        e.preventDefault()
         const alerts = Swal.mixin({ customClass: { confirmButton: 'btn btn-warning' } })
         await axios.delete(`${process.env.REACT_APP_API_URL}/items/${id}`, {
                 headers: {
@@ -15,32 +50,28 @@ class ListItemResto extends React.Component {
             .then(res => {
                 console.log(res.data)
                 if (res.data.success !== false) {
-                    try {
-                        alerts.fire({ icon: 'success', text: 'Item was successfully deleted' })
-
-                    } catch (error) {
-                        console.log(error.response)
-                        alerts.fire({ icon: 'error', text: `${error.response.msg}` })
-                    }
+                    alerts.fire({ icon: 'success', text: 'Item was successfully deleted' })
+                        // this.setState({onDelete:true})
+                        // this.getDataItems()
                 } else {
                     alerts.fire({ icon: 'error', title: 'Oops', text: 'delete item failed' })
                 }
             })
             .catch(err => {
-                console.log({ err })
-                alerts.fire({ icon: 'error', text: `${err.response.msg}` })
+                alerts.fire({ icon: 'error', text: `error` })
+                this.getDataItems()
             })
     }
 
 
     render() {
         return ( <
-            div className = "col-lg-2 itemsbottom" >
+            div className = "col-lg-2 itemsbottom mb-5" >
             <
             Link to = { `/restaurant-items/${this.props.id}` }
             className = "text-decoration-none" >
             <
-            div className = "card  text-center carditemrestos" >
+            div className = "card text-center carditemrestos" >
             <
             img src = { process.env.REACT_APP_API_URL + this.props.images }
             className = "card-img-top imgitemrestos" / >
@@ -53,7 +84,7 @@ class ListItemResto extends React.Component {
             /div> <
             div className = "btn-group text-center" >
             <
-            button onClick = { e => this.handleDelete(this.props.id) }
+            button onClick = { e => this.handleDelete(e, this.props.id) }
             type = "button"
             className = "btn btn-danger btndel" > Delete < /button> <
             /div> <
